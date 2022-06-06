@@ -53,4 +53,8 @@ public class MemberService {
             return false;
         }
     }
+
+    public void delete(Long cheersMemberId) {
+        memberRepository.delete(cheersMemberId);
+    }
 }

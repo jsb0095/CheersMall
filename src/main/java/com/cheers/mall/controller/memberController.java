@@ -96,4 +96,9 @@ public class memberController {
       }
 
 }
+@GetMapping("/delete")
+    public String delete(@RequestParam("cheersMemberId")Long cheersMemberId){
+        memberService.delete(cheersMemberId);
+        return "member/cheersMain";
+}
 }

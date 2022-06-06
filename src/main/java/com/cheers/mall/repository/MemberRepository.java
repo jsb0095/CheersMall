@@ -38,4 +38,8 @@ public class MemberRepository {
      int updateResult =  sql.update("member.update",memberDTO);
       return   updateResult;
     }
+
+    public void delete(Long cheersMemberId) {
+        sql.delete("member.delete",cheersMemberId);
+    }
 }

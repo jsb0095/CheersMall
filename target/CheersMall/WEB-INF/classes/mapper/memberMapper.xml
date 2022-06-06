@@ -22,7 +22,9 @@
     <update id="update" parameterType="MDTO">
         update cheersMember_table set memberAddress1=#{memberAddress1},memberAddress2=#{memberAddress2},memberAddress3=#{memberAddress3},memberName=#{memberName} where cheersMemberId=#{cheersMemberId}
     </update>
-
+    <delete id="delete" parameterType="Long">
+        delete from cheersMember_table where  cheersMemberId=#{cheersMemberId}
+    </delete>
 </mapper>
 
 
