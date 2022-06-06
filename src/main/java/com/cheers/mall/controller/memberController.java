@@ -87,7 +87,13 @@ public class memberController {
         return "member/updateForm";
     }
 @PostMapping("/update")
-    public String update(){
-        return ":member/"
+    public String update(@ModelAttribute MemberDTO memberDTO){
+      boolean updateResult =  memberService.update(memberDTO);
+      if(updateResult){
+          return "redirect:/member/updateForm?cheersMemberId="+memberDTO.getCheersMemberId();
+      }else {
+          return "member/updateForm";
+      }
+
 }
 }

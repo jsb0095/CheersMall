@@ -19,6 +19,10 @@
     <select id="findById" parameterType="Long" resultType="MDTO">
         select * from cheersMember_table where cheersMemberId=#{cheersMemberId}
     </select>
+    <update id="update" parameterType="MDTO">
+        update cheersMember_table set memberAddress1=#{memberAddress1},memberAddress2=#{memberAddress2},memberAddress3=#{memberAddress3},memberName=#{memberName} where cheersMemberId=#{cheersMemberId}
+    </update>
+
 </mapper>
 
 

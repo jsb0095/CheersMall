@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <!-- CSS only -->
@@ -16,7 +17,7 @@
 회원아이디:${sessionScope.getMemberId}<br>
 회원번호:${sessionScope.getId}<br>
 
-<a href="/member"><input type="image" src="/resources/jpg/logo2.jpg" width="100" height=50"></a>
+<a href="/member/cheersMain"><input type="image" src="/resources/jpg/logo2.jpg" width="100" height=50"></a>
 <input type="button"  value="회원가입" onclick="saveForm()"><br>
 <a href="/member/loginForm">로그인</a><br>
 

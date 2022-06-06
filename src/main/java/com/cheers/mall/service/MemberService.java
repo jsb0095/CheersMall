@@ -43,4 +43,14 @@ public class MemberService {
     public MemberDTO findById(Long cheersMemberId) {
       return   memberRepository.findById(cheersMemberId);
     }
+
+    public boolean update(MemberDTO memberDTO) {
+        int updateResult =memberRepository.update(memberDTO);
+        if(updateResult>0){
+            return true;
+
+        }else {
+            return false;
+        }
+    }
 }

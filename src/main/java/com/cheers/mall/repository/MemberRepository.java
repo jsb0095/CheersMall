@@ -33,4 +33,9 @@ public class MemberRepository {
     public MemberDTO findById(Long cheersMemberId) {
        return sql.selectOne("member.findById",cheersMemberId);
     }
+
+    public int update(MemberDTO memberDTO) {
+     int updateResult =  sql.update("member.update",memberDTO);
+      return   updateResult;
+    }
 }
