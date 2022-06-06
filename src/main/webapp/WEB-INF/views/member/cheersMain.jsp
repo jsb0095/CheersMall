@@ -17,19 +17,18 @@
 회원번호:${sessionScope.getId}<br>
 
 <a href="/member"><input type="image" src="/resources/jpg/logo2.jpg" width="100" height=50"></a>
-<a><input type="button" onclick="saveForm()">회원가입</a><br>
+<input type="button"  value="회원가입" onclick="saveForm()"><br>
 <a href="/member/loginForm">로그인</a><br>
 
 <a href="/member/logout">로그아웃</a><br>
 
 <a href="/member/myPage?cheersMemberId=${sessionScope.getId}"><input type="image" src="/resources/jpg/myPageIcon.jpg"width="50" height=50"></a><br>
+<a href="/member/updateForm?cheersMemberId=${sessionScope.getId}">회원정보수정</a>
 </body>
 <script>
     function saveForm(){
         location.href="/member/saveForm"
     }
-    <%--function myPage(){--%>
-    <%--    location.href="/member/myPage?memberId="${sessionScope.memberId};--%>
-    <%--}--%>
+
 </script>
 </html>

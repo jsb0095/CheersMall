@@ -13,7 +13,10 @@
     <select id="duplicateCheck" parameterType="String" resultType="MDTO">
         select * from cheersMember_table where memberId=#{memberId}
     </select>
-    <select id="findById" resultType="MDTO" parameterType="Long">
+    <select id="myPage" resultType="MDTO" parameterType="MDTO">
+        select * from cheersMember_table where cheersMemberId=#{cheersMemberId}
+    </select>
+    <select id="findById" parameterType="Long" resultType="MDTO">
         select * from cheersMember_table where cheersMemberId=#{cheersMemberId}
     </select>
 </mapper>

@@ -25,11 +25,12 @@ public class MemberRepository {
       return   sql.selectOne("member.duplicateCheck",memberId);
     }
 
-    public List<OderDTO> findById(Long cheersMemberId) {
-      MemberDTO memberDTO= sql.selectOne("member.findById",cheersMemberId);
+    public List<OderDTO> myPage(Long cheersMemberId) {
+      MemberDTO memberDTO= sql.selectOne("member.myPage",cheersMemberId);
       return sql.selectList("Oder.myPage",memberDTO);
+    }
 
-
-
+    public MemberDTO findById(Long cheersMemberId) {
+       return sql.selectOne("member.findById",cheersMemberId);
     }
 }

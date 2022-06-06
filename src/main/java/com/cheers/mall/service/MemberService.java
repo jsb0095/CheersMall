@@ -35,8 +35,12 @@ public class MemberService {
 
     }
 
-    public List<OderDTO> findById(Long cheersMemberId) {
-     List<OderDTO> oderDTOList=  memberRepository.findById(cheersMemberId);
+    public List<OderDTO> myPage(Long cheersMemberId) {
+     List<OderDTO> oderDTOList=  memberRepository.myPage(cheersMemberId);
         return oderDTOList;
+    }
+
+    public MemberDTO findById(Long cheersMemberId) {
+      return   memberRepository.findById(cheersMemberId);
     }
 }
