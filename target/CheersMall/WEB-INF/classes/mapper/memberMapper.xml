@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="member">
+    <insert id="save" parameterType="MDTO">
+        insert into cheersMember_table(memberId,memberPassword,memberName,memberBirthDay,memberEmail,memberMobile,memberAddress1,memberAddress2,memberAddress3)values (#{memberId},#{memberPassword},#{memberName},#{memberBirthDay},#{memberEmail},#{memberMobile},#{memberAddress1},#{memberAddress2},#{memberAddress3})
+    </insert>
+    <select id="login" parameterType="MDTO" resultType="MDTO">
+        select * from cheersMember_table where memberId=#{memberId} and memberPassword=#{memberPassword}
+    </select>
+    <select id="duplicateCheck" parameterType="String" resultType="MDTO">
+        select * from cheersMember_table where memberId=#{memberId}
+    </select>
+    <select id="findById" resultType="MDTO" parameterType="Long">
+        select * from cheersMember_table where cheersMemberId=#{cheersMemberId}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
