@@ -101,4 +101,8 @@ public class memberController {
         memberService.delete(cheersMemberId);
         return "member/cheersMain";
 }
+@GetMapping("/kkoPay")
+    public String kkoPay(){
+        return "member/kkoPay";
+}
 }

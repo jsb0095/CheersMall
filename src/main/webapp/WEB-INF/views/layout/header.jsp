@@ -16,15 +16,60 @@
     button{
         text-align: center;
     }
+    image{
+        display: block;
+        vertical-align:bottom
+    }
 </style>
 </head>
 <body>
+<header class="p-3 bg-white text-white" >
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/member/cheersMain" class="d-flex align-items-center mb-2 mb-lg-0  text-decoration-none"><input type="image" style="display: block  ;vertical-align:bottom" src="/resources/jpg/logo4.jpg" width="300" height=70">
+            </a>
 
-<header class="form-control" ><!--header 구분용 역할은 x 시맨틱 태그-->
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <c:if test="${sessionScope.getId eq null}">
+                <li><a href="/member/saveForm" class="nav-link px-2 text-black">회원가입</a></li>
+                </c:if>
+                <c:if test="${sessionScope.getId ne null}">
+                <li><a href="/member/myPage?cheersMemberId=${sessionScope.getId}" class="nav-link px-2 text-black">마이페이지</a></li>
+                </c:if>
+                <c:if test="${sessionScope.getId ne null}">
+                <li><a href="/member/updateForm?cheersMemberId=${sessionScope.getId}" class="nav-link px-2 text-black">회원정보수정</a></li>
+                </c:if>
+                <c:if test="${sessionScope.getId ne null}">
+                <li><a href="member/cart" class="nav-link px-2 text-black">장바구니</a></li>
+                </c:if>
+            </ul>
 
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control form-control-dark btn-outline-dark text-white bg-white" placeholder="Search..." aria-label="Search">
+            </form>
 
+            <div class="text-end">
+                <c:if test="${sessionScope.getId eq null}">
+                <button type="button" class="btn btn-outline-dark me-2" onclick="loginForm()">로그인</button>
+                </c:if>
+                <c:if test="${sessionScope.getId ne null}">
+                <button type="button"  class="btn btn-outline-dark" onclick="logout()">로그아웃</button>
+                </c:if>
+
+            </div>
+        </div>
+    </div>
 </header>
 
-</body>
 
+</body>
+<script>
+    function logout(){
+        location.href="/member/logout"
+                }
+
+function loginForm(){
+    location.href="/member/loginForm"
+}
+</script>
 </html>
