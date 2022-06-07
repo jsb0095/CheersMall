@@ -45,7 +45,8 @@
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control form-control-dark btn-outline-dark text-white bg-white" placeholder="Search..." aria-label="Search">
+                <input type="search" class="form-control form-control-dark btn-outline-dark text-dark bg-white" placeholder="Search..." aria-label="Search">
+                <input type="button" onclick="" class="btn-outline-dark btn" value="검색" >
             </form>
 
             <div class="text-end">

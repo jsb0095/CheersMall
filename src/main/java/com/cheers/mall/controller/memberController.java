@@ -47,7 +47,7 @@ public class memberController {
             httpSession.setAttribute("getMemberId", loginResult.getMemberId());
             model.addAttribute("loginResult", loginResult);
         if(loginResult.getMemberId().equals("admin")){
-            return "member/admin";
+            return "admin/admin";
         }
             return "member/cheersMain";
         } else {
