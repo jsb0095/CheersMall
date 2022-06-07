@@ -57,4 +57,8 @@ public class MemberService {
     public void delete(Long cheersMemberId) {
         memberRepository.delete(cheersMemberId);
     }
+
+    public List<MemberDTO> userFindAll() {
+      return   memberRepository.userFindAll();
+    }
 }

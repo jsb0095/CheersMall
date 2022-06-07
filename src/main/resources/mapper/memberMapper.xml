@@ -25,6 +25,9 @@
     <delete id="delete" parameterType="Long">
         delete from cheersMember_table where  cheersMemberId=#{cheersMemberId}
     </delete>
+    <select id="userFindAll" resultType="MDTO">
+        select * from cheersMember_table;
+    </select>
 </mapper>
 
 

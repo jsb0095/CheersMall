@@ -106,4 +106,10 @@ public class memberController {
     public String kkoPay(){
         return "member/kkoPay";
 }
+@GetMapping("/userFindAll")
+    public String userFindAll(Model model){
+       List<MemberDTO> memberDTOList= memberService.userFindAll();
+       model.addAttribute("userList",memberDTOList);
+        return "member/userFindAll";
+}
 }
