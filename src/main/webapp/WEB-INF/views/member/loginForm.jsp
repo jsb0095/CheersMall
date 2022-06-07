@@ -13,6 +13,7 @@
     <title>로그인페이지</title>
 </head>
 <body>
+<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto">
     <form action="/member/login" method="post">
         <input type="text" class="gap-2" name="memberId" placeholder="아이디"><br>

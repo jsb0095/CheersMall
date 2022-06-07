@@ -46,7 +46,9 @@ public class memberController {
             httpSession.setAttribute("getId", loginResult.getCheersMemberId());
             httpSession.setAttribute("getMemberId", loginResult.getMemberId());
             model.addAttribute("loginResult", loginResult);
-
+        if(loginResult.getMemberId().equals("admin")){
+            return "member/admin";
+        }
             return "member/cheersMain";
         } else {
             return "member/loginForm";
@@ -69,7 +71,6 @@ public class memberController {
 
     @GetMapping("myPage")
     public String myPage(@RequestParam("cheersMemberId") Long cheersMemberId, Model model) {
-        System.out.println(cheersMemberId);
         List<OderDTO> oderDTOList = memberService.myPage(cheersMemberId);
 
         model.addAttribute("findId", oderDTOList);

@@ -17,7 +17,7 @@ public class MemberService {
 
     public MemberDTO login(MemberDTO memberDTO) {
       MemberDTO loginResult=  memberRepository.login(memberDTO);
-        System.out.println(loginResult);
+
       if(loginResult!=null){
 
       } return loginResult;
@@ -25,7 +25,7 @@ public class MemberService {
 
     public String duplicateCheck(String memberId) {
        MemberDTO memberDTO= memberRepository.duplicateCheck(memberId);
-        System.out.println("memberDTO = " + memberDTO);
+
        if(memberDTO!=null)
        {
            return "no";
