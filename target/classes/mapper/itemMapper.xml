@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Item">
+<insert id="itemSave" parameterType="IDTO">
+    insert into cheersItem_table (itemName,itemPrice,itemDiscount,itemStock,itemImageName1,itemImageName2,itemImageName3,itemExp,itemDelivery)
+    values (#{itemName},#{itemPrice},#{itemDiscount},#{itemStock},#{itemImageName1},#{itemImageName2},#{itemImageName3},#{itemExp},#{itemDelivery})
+</insert>
+<select id="itemList" resultType="IDTO">
+    select * from cheersItem_table
+</select>
+  <select id="pagingList" parameterType="java.util.HashMap" resultType="IDTO">
+        select *from cheersItem_table order by itemId desc limit #{start},#{limit}
+    </select>
+    <select id="count" resultType="int">
+        select count(itemId) from  cheersItem_table
+    </select>
+    <select id="search" parameterType="String" resultType="IDTO">
+        select * from cheersItem_table where itemName like concat('%',#{q},'%') order by itemId desc
+    </select>
+    <select id="findItemId" parameterType="Long" resultType="IDTO">
+        select * from cheersItem_table where itemId=#{itemId}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
