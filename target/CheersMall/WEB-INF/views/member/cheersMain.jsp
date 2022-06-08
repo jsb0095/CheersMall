@@ -19,18 +19,14 @@
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 
 
-
 <div style="margin:0 300px; width: 1200px; height: 850px">
-    <c:if test="${sessionScope.getMemberId!=null}">
-    <div style="margin-left:1000px">ID:${sessionScope.getMemberId}</div>
-    </c:if>
 <c:forEach var="item" items="${itemDTOList}">
     <span class="a2" style="margin-left: 150px; text-align: center">
         <span class="card" style="margin-top: 50px ;float:left; width: 275px; height: 350px">
-            <img width="275px" height="245px" src="${pageContext.request.contextPath}/upload/${item.itemImageName}">
+            <img width="275px" height="245px" onclick="detail(${item.itemId})" src="${pageContext.request.contextPath}/upload/${item.itemImageName1}">
             <span class="card-body">
                 <p class="card-text">${item.itemName}<br>
-                    <del style="color: red">${item.itemPrice}</del>=>${item.itemDiscount}</p>
+                    <del style="color: red">${item.itemPrice}원</del>=>${item.itemDiscount}원</p>
             </span>
         </span>
     </span>
@@ -79,7 +75,10 @@
             </c:choose>
         </ul>
 </div>
-
 </body>
-
+<script>
+    function detail(itemID){
+        location.href="/item/itemDetail?itemId="+itemID;
+    }
+</script>
 </html>

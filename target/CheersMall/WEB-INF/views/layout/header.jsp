@@ -26,8 +26,13 @@
 <header class="p-3 bg-white text-white" >
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <c:if test="${sessionScope.getMemberId ne 'admin'}">
             <a href="/member/cheersMain" class="d-flex align-items-center mb-2 mb-lg-0  text-decoration-none"><input type="image" style="display: block  ;vertical-align:bottom" src="/resources/jpg/logo4.jpg" width="300" height=70">
             </a>
+            </c:if>
+                <c:if test="${sessionScope.getMemberId eq 'admin'}">
+            <a href="/member/admin" class="d-flex align-items-center mb-2 mb-lg-0  text-decoration-none"><input type="image" style="display: block  ;vertical-align:bottom" src="/resources/jpg/logo5.jpg" width="300" height=70">
+                </c:if>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <c:if test="${sessionScope.getId eq null}">
@@ -42,12 +47,20 @@
                 <c:if test="${sessionScope.getId ne null}">
                 <li><a href="member/cart" class="nav-link px-2 text-black">장바구니</a></li>
                 </c:if>
+                <c:if test="${sessionScope.getMemberId eq 'admin'}">
+                 <li><a href="/member/userFindAll" class="nav-link px-2 text-black" >회원목록조회</a></li>
+                </c:if>
+                <c:if test="${sessionScope.getMemberId eq 'admin'}">
+                <li> <a href="/item/saveForm" class="nav-link px-2 text-black" >상품입고</a></li>
+                </c:if>
             </ul>
             <div class="text-end">
                 <c:if test="${sessionScope.getId eq null}">
                     <button type="button" class="btn btn-outline-dark me-2" onclick="loginForm()">로그인</button>
                 </c:if>
+
                 <c:if test="${sessionScope.getId ne null}">
+                    <b style="color: black">${sessionScope.getMemberId}님</b>
                     <button type="button"  class="btn btn-outline-dark" onclick="logout()">로그아웃</button>
                 </c:if>
 

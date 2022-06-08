@@ -39,7 +39,12 @@ public class memberController {
         memberService.save(memberDTO);
         return "member/loginForm";
     }
-
+    @GetMapping("admin")
+    public String adminPage(Model model){
+        List<ItemDTO>itemDTOList =itemService.itemList();
+        model.addAttribute("itemDTOList",itemDTOList);
+        return "member/admin";
+    }
     @GetMapping("/loginForm")
     public String loginForm() {
         return "member/loginForm";
