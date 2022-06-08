@@ -43,21 +43,21 @@
                 <li><a href="member/cart" class="nav-link px-2 text-black">장바구니</a></li>
                 </c:if>
             </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control form-control-dark btn-outline-dark text-dark bg-white" placeholder="Search..." aria-label="Search">
-                <input type="button" onclick="" class="btn-outline-dark btn" value="검색" >
-            </form>
-
             <div class="text-end">
                 <c:if test="${sessionScope.getId eq null}">
-                <button type="button" class="btn btn-outline-dark me-2" onclick="loginForm()">로그인</button>
+                    <button type="button" class="btn btn-outline-dark me-2" onclick="loginForm()">로그인</button>
                 </c:if>
                 <c:if test="${sessionScope.getId ne null}">
-                <button type="button"  class="btn btn-outline-dark" onclick="logout()">로그아웃</button>
+                    <button type="button"  class="btn btn-outline-dark" onclick="logout()">로그아웃</button>
                 </c:if>
 
             </div>
+            <form class="container input-group" method="post" action="/item/search">
+               <input type="search"  name="q" class="form-control form-control-dark btn-outline-dark text-dark bg-white" placeholder="Search..." aria-label="Search">
+                <input type="submit" class="btn-outline-dark btn" value="검색">
+            </form>
+
+
         </div>
     </div>
 </header>

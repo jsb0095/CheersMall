@@ -21,7 +21,9 @@
 
 
 <div style="margin:0 300px; width: 1200px; height: 850px">
+    <c:if test="${sessionScope.getMemberId!=null}">
     <div style="margin-left:1000px">ID:${sessionScope.getMemberId}</div>
+    </c:if>
 <c:forEach var="item" items="${itemDTOList}">
     <span class="a2" style="margin-left: 150px; text-align: center">
         <span class="card" style="margin-top: 50px ;float:left; width: 275px; height: 350px">

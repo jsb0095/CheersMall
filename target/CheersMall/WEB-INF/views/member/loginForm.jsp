@@ -15,10 +15,9 @@
 <body>
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto">
-    <form action="/member/login" method="post">
-        <input type="text" class="gap-2" name="memberId" placeholder="아이디"><br>
-        <input type="password" class="gap-2" name="memberPassword" placeholder="비밀번호"><br>
-
+    <form action="/member/login" method="post" class="container">
+        <input type="text" name="memberId" placeholder="아이디"><br>
+        <input type="password"  name="memberPassword" placeholder="비밀번호"><br>
         <input type="submit" class=" d-grid mx-auto" value="로그인">
     </form>
 </div>

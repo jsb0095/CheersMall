@@ -53,8 +53,8 @@
 
             </div>
             <form class="container input-group" method="post" action="/item/search">
-               <input type="search" class="form-control form-control-dark btn-outline-dark text-dark bg-white" placeholder="Search..." aria-label="Search">
-                <input type="button" name="q" class="btn-outline-dark btn" value="검색">
+               <input type="search"  name="q" class="form-control form-control-dark btn-outline-dark text-dark bg-white" placeholder="Search..." aria-label="Search">
+                <input type="submit" class="btn-outline-dark btn" value="검색">
             </form>
 
 
