@@ -1,7 +1,9 @@
 package com.cheers.mall.controller;
 
+import com.cheers.mall.dto.ItemDTO;
 import com.cheers.mall.dto.MemberDTO;
 import com.cheers.mall.dto.OderDTO;
+import com.cheers.mall.service.ItemService;
 import com.cheers.mall.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +18,12 @@ import java.util.List;
 public class memberController {
     @Autowired
     private MemberService memberService;
-
+    @Autowired private ItemService itemService;
     @GetMapping("/cheersMain")
-    public String cheersMall() {
+    public String cheersMall(Model model) {
+    List<ItemDTO>itemDTOList =itemService.itemList();
+    model.addAttribute("itemDTOList",itemDTOList);
+
         return "/member/cheersMain";
     }
 
@@ -47,6 +52,8 @@ public class memberController {
             httpSession.setAttribute("getId", loginResult.getCheersMemberId());
             httpSession.setAttribute("getMemberId", loginResult.getMemberId());
             model.addAttribute("loginResult", loginResult);
+            List<ItemDTO>itemDTOList =itemService.itemList();
+            model.addAttribute("itemDTOList",itemDTOList);
         if(loginResult.getMemberId().equals("admin")){
             return "member/admin";
         }
@@ -64,7 +71,9 @@ public class memberController {
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session) {
+    public String logout(HttpSession session,Model model) {
+        List<ItemDTO>itemDTOList =itemService.itemList();
+        model.addAttribute("itemDTOList",itemDTOList);
         session.invalidate();
 
         return "member/cheersMain";
