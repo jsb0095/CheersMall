@@ -1,6 +1,7 @@
 package com.cheers.mall.dto;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class MemberDTO {
@@ -15,5 +16,6 @@ public class MemberDTO {
     private String memberAddress2;
     private String memberAddress3;
     int memberBuy;
+    private MultipartFile itemImageFile;
 
 }

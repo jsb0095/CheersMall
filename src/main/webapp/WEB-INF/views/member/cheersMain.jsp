@@ -45,7 +45,7 @@
             <img src="../../../resources/jpg/닭발.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <p class="card-text">숯불에 직접구운 불향가득 불닭발
-                가격:9900원</p>
+                가격:9900원</p>i
             </div>
         </div>
     </div>

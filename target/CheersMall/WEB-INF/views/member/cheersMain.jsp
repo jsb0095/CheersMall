@@ -45,37 +45,38 @@
             <img src="../../../resources/jpg/닭발.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <p class="card-text">숯불에 직접구운 불향가득 불닭발
-                가격:9900원</p>
+                가격:9900원</p>i
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
-            <img src="../../../resources/jpg/떡볶이.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text">학교 앞 추억의  매콤 달콤 떡볶이
-                    가격:3900원</p>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="../../../resources/jpg/목살.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text">제주도 흑돼지 목살 500g
-                    가격:15000원</p>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="../../../resources/jpg/순대.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text">전주에서 유명한 피순대
-                    가격:6900원</p>
-            </div>
-        </div>
-</div>
+    </div>
+<%--        <div class="card" style="width: 18rem;">--%>
+<%--            <img src="../../../resources/jpg/떡볶이.jpg" class="card-img-top" alt="...">--%>
+<%--            <div class="card-body">--%>
+<%--                <p class="card-text">학교 앞 추억의  매콤 달콤 떡볶이--%>
+<%--                    가격:3900원</p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="card" style="width: 18rem;">--%>
+<%--            <img src="../../../resources/jpg/목살.jpg" class="card-img-top" alt="...">--%>
+<%--            <div class="card-body">--%>
+<%--                <p class="card-text">제주도 흑돼지 목살 500g--%>
+<%--                    가격:15000원</p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="card" style="width: 18rem;">--%>
+<%--            <img src="../../../resources/jpg/순대.jpg" class="card-img-top" alt="...">--%>
+<%--            <div class="card-body">--%>
+<%--                <p class="card-text">전주에서 유명한 피순대--%>
+<%--                    가격:6900원</p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
 
 
 
 
 
-<a href="/member/myPage?cheersMemberId=${sessionScope.getId}"><input type="image" src="/resources/jpg/myPageIcon.jpg"width="100" height=100"></a><br>
+
+<%--<a href="/member/myPage?cheersMemberId=${sessionScope.getId}"><input type="image" src="/resources/jpg/myPageIcon.jpg"width="100" height=100"></a><br>--%>
 <%--<a href="/member/kkoPay">결제하기</a>--%>
 </body>
 

@@ -18,8 +18,8 @@
 </head>
 <body>
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
-<div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto">
-<form action="/member/save" method="post">
+<div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto" >
+<form action="/member/save" method="post" enctype="multipart/form-data">
     <input type="text" class="gap-2" name="memberId" id="duplicateMemberId" onblur="duplicate()" placeholder="아이디"><br>
     <p id="duplicateResult"></p>
     <input type="password" class="gap-2" name="memberPassword" placeholder="비밀번호"><br>
@@ -32,6 +32,7 @@
     <input type="text" id="sample6_address" name="memberAddress2" placeholder="주소"><br>
     <input type="text" id="sample6_detailAddress" name="memberAddress3" placeholder="상세주소">
     <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+    <input type="file" class="gap-2 form-control" name="itemImageFile" placeholder="상품사진">
 
     <input type="submit" class=" d-grid mx-auto" value="회원가입">
 </form>

@@ -17,19 +17,20 @@ public class memberController {
     @Autowired
     private MemberService memberService;
 
-    @GetMapping("cheersMain")
+    @GetMapping("/cheersMain")
     public String cheersMall() {
         return "/member/cheersMain";
     }
 
-    @GetMapping("saveForm")
+    @GetMapping("/saveForm")
     public String saveForm() {
         return "member/saveForm";
     }
 
-    @PostMapping("save")
+    @PostMapping("/save")
     public String save(@ModelAttribute MemberDTO memberDTO, Model model) {
         model.addAttribute("memberDTO", memberDTO);
+        System.out.println("memberDTO = " + memberDTO + ", model = " + model);
         memberService.save(memberDTO);
         return "member/loginForm";
     }
@@ -39,7 +40,7 @@ public class memberController {
         return "member/loginForm";
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession httpSession, Model model) {
         MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null) {
@@ -47,7 +48,7 @@ public class memberController {
             httpSession.setAttribute("getMemberId", loginResult.getMemberId());
             model.addAttribute("loginResult", loginResult);
         if(loginResult.getMemberId().equals("admin")){
-            return "admin/admin";
+            return "member/admin";
         }
             return "member/cheersMain";
         } else {
@@ -56,20 +57,20 @@ public class memberController {
         }
     }
 
-    @PostMapping("duplicateCheck")
+    @PostMapping("/duplicateCheck")
     public @ResponseBody String duplicateCheck(@RequestParam("duplicateMemberId") String memberId) {
         String result = memberService.duplicateCheck(memberId);
         return result;
     }
 
-    @GetMapping("logout")
+    @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
 
         return "member/cheersMain";
     }
 
-    @GetMapping("myPage")
+    @GetMapping("/myPage")
     public String myPage(@RequestParam("cheersMemberId") Long cheersMemberId, Model model) {
         List<OderDTO> oderDTOList = memberService.myPage(cheersMemberId);
 
