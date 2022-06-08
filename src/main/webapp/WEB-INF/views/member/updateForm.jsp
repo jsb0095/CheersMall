@@ -17,43 +17,25 @@
 <body>
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 <table class="table">
-    <tr>
-        <th>회원번호</th>
-        <th>아이디</th>
-        <th>비밀번호</th>
-        <th>이름</th>
-        <th>우편번호</th>
-        <th>주소</th>
-        <th>상세주소</th>
-        <th>참고항목</th>
-        <th>회원정보수정</th>
-        <th>취소</th>
+    <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto">
+        <form action="/member/update" method="post">
+
+            회원번호<input type="text"  name="cheersMemberId"  value="${userData.cheersMemberId}"readonly>
+            아이디<input type="text" id="memberId" name="memberId" value="${userData.memberId}"readonly>
+                <span id="updateIdCheck"></span>
+            비밀번호<input type="password" name="memberPassword">
+            이름<input type="text"  value="${userData.memberName}" name="memberName">
+                <input type="text" id="sample6_postcode" name="memberAddress1" placeholder="우편번호"><input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+                <input type="text" id="sample6_address" name="memberAddress2" placeholder="주소">
+                <input type="text" id="sample6_detailAddress" name="memberAddress3" placeholder="상세주소">
+                <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+                <input type="submit" class=" d-grid mx-auto" value="회원정보수정" ><input type="button" class="btn-group" onclick="cancel()" value="취소">
+                <input type="button" class=" d-grid mx-auto" onclick="deleteId()" value="회원탈퇴">
+        </form>
+    </div>
 
 
-    </tr>
-
-        <tr>
-            <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto">
-                <form action="/member/update" method="post">
-            <td><input type="text"  name="cheersMemberId"  value="${userData.cheersMemberId}"readonly ></td><br>
-            <td><input type="text" id="memberId" name="memberId" value="${userData.memberId}" readonly></td><br>
-                    <span id="updateIdCheck"></span>
-            <td><input type="password" name="memberPassword"></td><br>
-            <td><input type="text"  value="${userData.memberName}" name="memberName" ></td><br>
-                    <td><input type="text" id="sample6_postcode" name="memberAddress1" placeholder="우편번호"><input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"></td><br>
-            <td><input type="text" id="sample6_address" name="memberAddress2" placeholder="주소"></td><br>
-            <td><input type="text" id="sample6_detailAddress" name="memberAddress3" placeholder="상세주소"></td><br>
-            <td><input type="text" id="sample6_extraAddress" placeholder="참고항목"></td><br>
-            <td><input type="submit" class=" d-grid mx-auto" value="회원정보수정" ></td><br>
-            <td><input type="button" class=" d-grid mx-auto" onclick="cancel()" value="취소"></td>
-
-
-                </form>
-            </div>
-        </tr>
-<
 </table>
-<input type="button" onclick="deleteId()" value="회원탈퇴">
 </body>
 <script>
 function deleteId(){
