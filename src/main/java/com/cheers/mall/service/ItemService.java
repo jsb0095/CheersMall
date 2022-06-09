@@ -86,7 +86,40 @@ public class ItemService {
        return itemRepository.search(q);
     }
 
-    public ItemDTO findItemId(Long findId) {
-       return itemRepository.findItemId(findId);
+    public ItemDTO findItemId(Long itemId) {
+       return itemRepository.findItemId(itemId);
     }
+
+    public void itemUpdate(ItemDTO itemDTO) throws IOException {
+        MultipartFile boardFile1 = itemDTO.getItemImageFile1();
+        String boardFileName1 = boardFile1.getOriginalFilename();
+        boardFileName1 = System.currentTimeMillis() + "-" + boardFileName1;
+        String savePath1 = "C:\\spring_img\\" + boardFileName1;
+
+        if (!boardFile1.isEmpty()) {
+            itemDTO.setItemImageName1(boardFileName1);
+            boardFile1.transferTo(new File(savePath1));
+        }
+        MultipartFile boardFile2 = itemDTO.getItemImageFile2();
+        String boardFileName2 = boardFile2.getOriginalFilename();
+        boardFileName2 = System.currentTimeMillis() + "-" + boardFileName2;
+        String savePath2 = "C:\\spring_img\\" + boardFileName2;
+
+        if (!boardFile2.isEmpty()) {
+            itemDTO.setItemImageName2(boardFileName2);
+            boardFile2.transferTo(new File(savePath2));
+        }
+        MultipartFile boardFile3 = itemDTO.getItemImageFile3();
+        String boardFileName3 = boardFile3.getOriginalFilename();
+        boardFileName3 = System.currentTimeMillis() + "-" + boardFileName3;
+        String savePath3 = "C:\\spring_img\\" + boardFileName3;
+
+        if (!boardFile3.isEmpty()) {
+            itemDTO.setItemImageName3(boardFileName3);
+            boardFile3.transferTo(new File(savePath3));
+        }
+
+        itemRepository.itemUpdate(itemDTO);
+    }
+
 }

@@ -45,10 +45,27 @@ public class ItemController {
     return "member/cheersMain";
     }
     @GetMapping("/itemDetail")
-    public String itemDetail(@RequestParam("itemId")Long findId,Model model){
-       ItemDTO itemDTO= itemService.findItemId(findId);
+    public String itemDetail(@RequestParam("itemId")Long itemId,Model model){
+       ItemDTO itemDTO= itemService.findItemId(itemId);
         System.out.println(itemDTO);
        model.addAttribute("itemDTO",itemDTO);
         return "item/itemDetail";
+    }
+    @GetMapping("updateForm")
+    public String itemUpdateForm(@RequestParam("itemId")Long itemId,Model model){
+      ItemDTO itemDTO=  itemService.findItemId(itemId);
+        List<ItemDTO>itemDTOList =itemService.itemList();
+        model.addAttribute("itemDTOList",itemDTOList);
+        model.addAttribute("updateItem",itemDTO);
+        System.out.println(itemDTO);
+        return "item/itemUpdateForm";
+
+    }
+    @PostMapping("/itemUpdate")
+    public String itemUpdate(@ModelAttribute ItemDTO itemDTO,Model model) throws IOException {
+        List<ItemDTO>itemDTOList =itemService.itemList();
+        model.addAttribute("itemDTOList",itemDTOList);
+        itemService.itemUpdate(itemDTO);
+        return "member/admin";
     }
 }

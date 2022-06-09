@@ -23,6 +23,9 @@
     <select id="findItemId" parameterType="Long" resultType="IDTO">
         select * from cheersItem_table where itemId=#{itemId}
     </select>
+    <update id="itemUpdate" parameterType="IDTO">
+        update cheersItem_table set itemName=#{itemName},itemPrice=#{itemPrice},itemDiscount=#{itemPrice},itemStock=#{itemStock},itemImageName1=#{itemImageName1},itemImageName2=#{itemImageName2},itemImageName3=#{itemImageName3},itemExp=#{itemExp},itemDelivery=#{itemDelivery} where itemId=#{itemId}
+    </update>
 </mapper>
 
 

@@ -33,7 +33,11 @@ public class ItemRepository {
      return    sql.selectList("Item.search",q);
     }
 
-    public ItemDTO findItemId(Long findId) {
-       return sql.selectOne("Item.findItemId",findId);
+    public ItemDTO findItemId(Long itemId) {
+       return sql.selectOne("Item.findItemId",itemId);
+    }
+
+    public void itemUpdate(ItemDTO itemDTO) {
+        sql.update("Item.itemUpdate",itemDTO);
     }
 }

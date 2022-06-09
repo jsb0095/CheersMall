@@ -49,7 +49,10 @@
          </tr>
              <td><button class="btn-outline-light bg-warning" style="color: white" name="itemBuy"  onclick="itemBuy()">상품구매</button></td>
              <td><button class="btn-outline-light bg-warning"  style="color: white" name="cartAdd"  onclick="cartAdd()">장바구니추가</button></td>
-
+         <c:if test="${sessionScope.getMemberId eq 'admin'}">
+             <td><button class="btn-outline-light bg-warning" style="color: white" name="itemUpdate"  onclick="itemUpdate()">상품수정</button></td>
+             <td><button class="btn-outline-light bg-warning" style="color: white" name="itemDelete"  onclick="itemDelete()">상품삭제</button></td>
+         </c:if>
      </table>
     </div>
 </div>
@@ -60,6 +63,12 @@
     </c:if>
 </div>
 </body>
+<script>
+    function itemUpdate(){
+        location.href="/item/updateForm?itemId=${itemDTO.itemId}"
+
+    }
+</script>
 <style>
 
     td{
