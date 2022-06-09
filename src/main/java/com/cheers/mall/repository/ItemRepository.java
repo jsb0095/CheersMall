@@ -1,5 +1,6 @@
 package com.cheers.mall.repository;
 
+import com.cheers.mall.dto.CartDTO;
 import com.cheers.mall.dto.ItemDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,23 @@ public class ItemRepository {
 
     public void itemDelete(Long itemId) {
         sql.delete("Item.itemDelete",itemId);
+    }
+
+    public void saveCart(CartDTO cartDTO) {
+
+        sql.insert("Item.saveCart",cartDTO);
+
+    }
+
+    public List<ItemDTO> cartList(Long itemId) {
+       return sql.selectList("Item.cartList",itemId);
+    }
+
+    public CartDTO  itemDuplicate(CartDTO cartDTO) {
+       return sql.selectOne("Item.itemDuplicate",cartDTO);
+    }
+
+    public void cartCount(CartDTO cartDTO) {
+        sql.update("Item.cartCount",cartDTO);
     }
 }

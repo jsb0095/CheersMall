@@ -29,6 +29,18 @@
     <delete id="itemDelete" parameterType="Long">
         delete from cheersItem_table where itemId=${itemId}
     </delete>
+    <insert id="saveCart" parameterType="CDTO">
+        insert into cheersCart_table(cheersMemberId,itemId,cartQTY) values(#{cheersMemberId},#{itemId},#{cartQTY})
+    </insert>
+    <select id="cartList" parameterType="Long" resultType="IDTO">
+        select  * from cheersItem_table where itemId=#{itemId}
+    </select>
+    <select id="itemDuplicate" resultType="CDTO" parameterType="CDTO">
+        select * from cheersCart_table where cheersMemberId=#{cheersMemberId} and itemId=#{itemId}
+    </select>
+    <update id="cartCount" parameterType="CDTO">
+        update cheersCart_table set cartQTY=cartQTY+1 where cheersMemberId=#{cheersMemberId} and itemId=#{itemId}
+    </update>
 </mapper>
 
 

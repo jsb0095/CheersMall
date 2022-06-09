@@ -45,7 +45,7 @@
                 <li><a href="/member/updateForm?cheersMemberId=${sessionScope.getId}" class="nav-link px-2 text-black">회원정보수정</a></li>
                 </c:if>
                 <c:if test="${sessionScope.getId ne null}">
-                <li><a href="member/cart" class="nav-link px-2 text-black">장바구니</a></li>
+                <li><a href="member/cart" class="nav-link px-2 text-black" onclick="cartList()">장바구니</a></li>
                 </c:if>
                 <c:if test="${sessionScope.getMemberId eq 'admin'}">
                  <li><a href="/member/userFindAll" class="nav-link px-2 text-black" >회원목록조회</a></li>
@@ -84,6 +84,9 @@
 
 function loginForm(){
     location.href="/member/loginForm"
+}
+function cartList(){
+        location.href="cartList?cheersMemberId=${sessionScope.getId}"
 }
 </script>
 </html>

@@ -1,5 +1,6 @@
 package com.cheers.mall.service;
 
+import com.cheers.mall.dto.CartDTO;
 import com.cheers.mall.dto.ItemDTO;
 import com.cheers.mall.dto.PageDTO;
 import com.cheers.mall.repository.ItemRepository;
@@ -124,5 +125,24 @@ public class ItemService {
 
     public void itemDelete(Long itemId) {
         itemRepository.itemDelete(itemId);
+    }
+
+    public void saveCart(CartDTO cartDTO) {
+        itemRepository.saveCart(cartDTO);
+    }
+
+    public List<ItemDTO> cartList(Long itemId) {
+
+       List<ItemDTO> itemDTOList=itemRepository.cartList(itemId);
+        return itemDTOList;
+    }
+
+    public CartDTO itemDuplicate(CartDTO cartDTO) {
+      return  itemRepository.itemDuplicate(cartDTO);
+    }
+
+
+    public void cartCount(CartDTO cartDTO) {
+        itemRepository.cartCount(cartDTO);
     }
 }

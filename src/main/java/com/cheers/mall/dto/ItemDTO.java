@@ -19,4 +19,5 @@ public class ItemDTO {
    private String itemExp;
    private int itemSell;
    private int itemDelivery;
+   private int itemCount;
 }

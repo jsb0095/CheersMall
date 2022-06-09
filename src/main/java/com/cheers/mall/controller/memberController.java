@@ -1,5 +1,6 @@
 package com.cheers.mall.controller;
 
+import com.cheers.mall.dto.CartDTO;
 import com.cheers.mall.dto.ItemDTO;
 import com.cheers.mall.dto.MemberDTO;
 import com.cheers.mall.dto.OderDTO;
@@ -18,11 +19,13 @@ import java.util.List;
 public class memberController {
     @Autowired
     private MemberService memberService;
-    @Autowired private ItemService itemService;
+    @Autowired
+    private ItemService itemService;
+
     @GetMapping("/cheersMain")
     public String cheersMall(Model model) {
-    List<ItemDTO>itemDTOList =itemService.itemList();
-    model.addAttribute("itemDTOList",itemDTOList);
+        List<ItemDTO> itemDTOList = itemService.itemList();
+        model.addAttribute("itemDTOList", itemDTOList);
 
         return "/member/cheersMain";
     }
@@ -39,12 +42,14 @@ public class memberController {
         memberService.save(memberDTO);
         return "member/loginForm";
     }
+
     @GetMapping("admin")
-    public String adminPage(Model model){
-        List<ItemDTO>itemDTOList =itemService.itemList();
-        model.addAttribute("itemDTOList",itemDTOList);
+    public String adminPage(Model model) {
+        List<ItemDTO> itemDTOList = itemService.itemList();
+        model.addAttribute("itemDTOList", itemDTOList);
         return "member/admin";
     }
+
     @GetMapping("/loginForm")
     public String loginForm() {
         return "member/loginForm";
@@ -57,11 +62,11 @@ public class memberController {
             httpSession.setAttribute("getId", loginResult.getCheersMemberId());
             httpSession.setAttribute("getMemberId", loginResult.getMemberId());
             model.addAttribute("loginResult", loginResult);
-            List<ItemDTO>itemDTOList =itemService.itemList();
-            model.addAttribute("itemDTOList",itemDTOList);
-        if(loginResult.getMemberId().equals("admin")){
-            return "member/admin";
-        }
+            List<ItemDTO> itemDTOList = itemService.itemList();
+            model.addAttribute("itemDTOList", itemDTOList);
+            if (loginResult.getMemberId().equals("admin")) {
+                return "member/admin";
+            }
             return "member/cheersMain";
         } else {
             return "member/loginForm";
@@ -76,9 +81,9 @@ public class memberController {
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session,Model model) {
-        List<ItemDTO>itemDTOList =itemService.itemList();
-        model.addAttribute("itemDTOList",itemDTOList);
+    public String logout(HttpSession session, Model model) {
+        List<ItemDTO> itemDTOList = itemService.itemList();
+        model.addAttribute("itemDTOList", itemDTOList);
         session.invalidate();
 
         return "member/cheersMain";
@@ -96,35 +101,41 @@ public class memberController {
     public void findById(@RequestParam("cheersMemberId") Long cheersMemberId) {
         memberService.findById(cheersMemberId);
     }
+
     @GetMapping("/updateForm")
-    public String updateForm(@RequestParam("cheersMemberId")Long cheersMemberId,Model model){
-       MemberDTO memberDTO= memberService.findById(cheersMemberId);
-       model.addAttribute("userData",memberDTO);
+    public String updateForm(@RequestParam("cheersMemberId") Long cheersMemberId, Model model) {
+        MemberDTO memberDTO = memberService.findById(cheersMemberId);
+        model.addAttribute("userData", memberDTO);
         return "member/updateForm";
     }
-@PostMapping("/update")
-    public String update(@ModelAttribute MemberDTO memberDTO){
-      boolean updateResult =  memberService.update(memberDTO);
-      if(updateResult){
-          return "redirect:/member/updateForm?cheersMemberId="+memberDTO.getCheersMemberId();
-      }else {
-          return "member/updateForm";
-      }
 
-}
-@GetMapping("/delete")
-    public String delete(@RequestParam("cheersMemberId")Long cheersMemberId){
+    @PostMapping("/update")
+    public String update(@ModelAttribute MemberDTO memberDTO) {
+        boolean updateResult = memberService.update(memberDTO);
+        if (updateResult) {
+            return "redirect:/member/updateForm?cheersMemberId=" + memberDTO.getCheersMemberId();
+        } else {
+            return "member/updateForm";
+        }
+
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("cheersMemberId") Long cheersMemberId) {
         memberService.delete(cheersMemberId);
         return "member/cheersMain";
-}
-@GetMapping("/kkoPay")
-    public String kkoPay(){
+    }
+
+    @GetMapping("/kkoPay")
+    public String kkoPay() {
         return "member/kkoPay";
-}
-@GetMapping("/userFindAll")
-    public String userFindAll(Model model){
-       List<MemberDTO> memberDTOList= memberService.userFindAll();
-       model.addAttribute("userList",memberDTOList);
+    }
+
+    @GetMapping("/userFindAll")
+    public String userFindAll(Model model) {
+        List<MemberDTO> memberDTOList = memberService.userFindAll();
+        model.addAttribute("userList", memberDTOList);
         return "member/userFindAll";
-}
+    }
+
 }

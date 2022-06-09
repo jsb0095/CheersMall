@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>${itemDTO.itemName}상세페이지</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="/resources/js/jquery.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
@@ -47,11 +49,11 @@
          <tr>
              <td>배송비: </td><td>${itemDTO.itemDelivery}원</td>
          </tr>
-             <td><button class="btn-outline-light bg-warning" style="color: white" name="itemBuy"  onclick="itemBuy()">상품구매</button></td>
-             <td><button class="btn-outline-light bg-warning"  style="color: white" name="cartAdd"  onclick="cartAdd()">장바구니추가</button></td>
+             <td><button class="btn-outline-light bg-warning" style="color: white"  onclick="itemBuy()">상품구매</button></td>
+             <td><button class="btn-outline-light bg-warning"  style="color: white"   onclick="cartAdd()">장바구니추가</button></td>
          <c:if test="${sessionScope.getMemberId eq 'admin'}">
-             <td><button class="btn-outline-light bg-warning" style="color: white" name="itemUpdate"  onclick="itemUpdate()">상품수정</button></td>
-             <td><button class="btn-outline-light bg-warning" style="color: white" name="itemDelete"  onclick="itemDelete()">상품삭제</button></td>
+             <td><button class="btn-outline-light bg-warning" style="color: white"   onclick="itemUpdate()">상품수정</button></td>
+             <td><button class="btn-outline-light bg-warning" style="color: white"   onclick="itemDelete()">상품삭제</button></td>
          </c:if>
      </table>
     </div>
@@ -70,6 +72,23 @@
     }
     function itemDelete(){
         location.href="/item/itemDelete?itemId=${itemDTO.itemId}"
+    }
+    function cartAdd(){
+        $.ajax({
+        type:"post",
+            url:"/item/cartDuplicate",
+            data:{"itemId":'${itemDTO.itemId}',"cheersMemberId":'${sessionScope.getId}'},
+                 dataType:"text",
+            success: function (result){
+                if(result=="ok"){
+                 location.href="/item/cartCount?itemId=${itemDTO.itemId}&cheersMemberId=${sessionScope.getId}"
+                }else{
+                    location.href="/item/itemCart?itemId=${itemDTO.itemId}&cheersMemberId=${sessionScope.getId}"
+                }
+            },
+
+        })
+
     }
 </script>
 <style>

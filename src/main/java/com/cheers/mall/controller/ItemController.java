@@ -1,5 +1,6 @@
 package com.cheers.mall.controller;
 
+import com.cheers.mall.dto.CartDTO;
 import com.cheers.mall.dto.ItemDTO;
 import com.cheers.mall.dto.PageDTO;
 import com.cheers.mall.service.ItemService;
@@ -73,4 +74,30 @@ public class ItemController {
         itemService.itemDelete(itemId);
         return "redirect:/member/admin";
     }
+    @GetMapping("/itemCart")
+    public String saveCart(@ModelAttribute CartDTO cartDTO){
+        itemService.saveCart(cartDTO);
+        return "redirect:/item/itemDetail?itemId="+cartDTO.getItemId();
+    }
+    @PostMapping("/cartDuplicate")
+    public @ResponseBody String itemDuplicate(@ModelAttribute CartDTO cartDTO){
+       CartDTO result = itemService.itemDuplicate(cartDTO);
+       if(result!=null) {
+           return "ok";
+       }else {
+           return "no";
+       }
+    }
+    @GetMapping("/cartCount")
+    public String cartCount(@ModelAttribute CartDTO cartDTO){
+        itemService.cartCount(cartDTO);
+        return "redirect:/item/itemDetail?itemId="+cartDTO.getItemId();
+    }
+    @GetMapping("/cartList")
+    public String cartList(@RequestParam("itemId")Long itemId,Model model){
+        List<ItemDTO> itemDTOList= itemService.cartList(itemId);
+        model.addAttribute("cartList",itemDTOList);
+        return "item/userCart";
+    }
+
 }
