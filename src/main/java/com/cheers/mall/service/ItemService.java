@@ -122,4 +122,7 @@ public class ItemService {
         itemRepository.itemUpdate(itemDTO);
     }
 
+    public void itemDelete(Long itemId) {
+        itemRepository.itemDelete(itemId);
+    }
 }

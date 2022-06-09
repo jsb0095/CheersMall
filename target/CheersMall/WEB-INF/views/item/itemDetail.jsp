@@ -68,6 +68,9 @@
         location.href="/item/updateForm?itemId=${itemDTO.itemId}"
 
     }
+    function itemDelete(){
+        location.href="/item/itemDelete?itemId=${itemDTO.itemId}"
+    }
 </script>
 <style>
 

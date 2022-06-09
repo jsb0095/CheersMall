@@ -29,8 +29,8 @@
                 <input type="text" id="sample6_address" name="memberAddress2" placeholder="주소">
                 <input type="text" id="sample6_detailAddress" name="memberAddress3" placeholder="상세주소">
                 <input type="text" id="sample6_extraAddress" placeholder="참고항목">
-                <input type="submit" class=" d-grid mx-auto" value="회원정보수정" ><input type="button" class="btn-group" onclick="cancel()" value="취소">
-                <input type="button" class=" d-grid mx-auto" onclick="deleteId()" value="회원탈퇴">
+                <div class="col-12 d-grid mx-auto"><input type="submit" value="회원정보수정" > <input type="button" onclick="cancel()" value="취소"></div>
+                <input type="button" class="col-12 d-grid mx-auto"  onclick="deleteId()" value="회원탈퇴">
         </form>
     </div>
 

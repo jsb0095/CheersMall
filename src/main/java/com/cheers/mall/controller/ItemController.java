@@ -66,6 +66,11 @@ public class ItemController {
         List<ItemDTO>itemDTOList =itemService.itemList();
         model.addAttribute("itemDTOList",itemDTOList);
         itemService.itemUpdate(itemDTO);
-        return "member/admin";
+        return "redirect:/member/admin";
+    }
+    @GetMapping("/itemDelete")
+    public String itemDelete(@RequestParam("itemId")Long itemId){
+        itemService.itemDelete(itemId);
+        return "redirect:/member/admin";
     }
 }

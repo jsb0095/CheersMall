@@ -26,6 +26,9 @@
     <update id="itemUpdate" parameterType="IDTO">
         update cheersItem_table set itemName=#{itemName},itemPrice=#{itemPrice},itemDiscount=#{itemPrice},itemStock=#{itemStock},itemImageName1=#{itemImageName1},itemImageName2=#{itemImageName2},itemImageName3=#{itemImageName3},itemExp=#{itemExp},itemDelivery=#{itemDelivery} where itemId=#{itemId}
     </update>
+    <delete id="itemDelete" parameterType="Long">
+        delete from cheersItem_table where itemId=${itemId}
+    </delete>
 </mapper>
 
 

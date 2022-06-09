@@ -40,4 +40,8 @@ public class ItemRepository {
     public void itemUpdate(ItemDTO itemDTO) {
         sql.update("Item.itemUpdate",itemDTO);
     }
+
+    public void itemDelete(Long itemId) {
+        sql.delete("Item.itemDelete",itemId);
+    }
 }
