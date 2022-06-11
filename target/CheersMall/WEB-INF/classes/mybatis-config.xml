@@ -6,5 +6,6 @@
         <typeAlias type="com.cheers.mall.dto.MemberDTO" alias="MDTO" />
         <typeAlias type="com.cheers.mall.dto.OderDTO" alias="ODTO" />
         <typeAlias type="com.cheers.mall.dto.ItemDTO" alias="IDTO" />
+        <typeAlias type="com.cheers.mall.dto.CartDTO" alias="CDTO" />
     </typeAliases>
 </configuration>

@@ -20,7 +20,7 @@
 <div style="margin-left:220px; width: 550px; height: 650px; flex:1">
     <span class="a2" style="margin-left: 150px; text-align: center">
         <span class="card" style="margin-top: 50px ;float:left; width: 275px; height: 350px">
-            <img style="margin: auto" width="500px" height="500px" src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName1}">
+            <img style="margin: auto" width="300px" height="300px" src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName1}">
         </span>
     </span>
 </div>
@@ -74,6 +74,7 @@
         location.href="/item/itemDelete?itemId=${itemDTO.itemId}"
     }
     function cartAdd(){
+        alert("징비구니에 상품이 추가되었습니다.")
         $.ajax({
         type:"post",
             url:"/item/cartDuplicate",
@@ -81,9 +82,9 @@
                  dataType:"text",
             success: function (result){
                 if(result=="ok"){
-                 location.href="/item/cartCount?itemId=${itemDTO.itemId}&cheersMemberId=${sessionScope.getId}"
+                 location.href="/item/cartCount?itemId=${itemDTO.itemId}&itemDiscount=${itemDTO.itemDiscount}&itemName=${itemDTO.itemName}&itemImageName1=${itemDTO.itemImageName1}&cheersMemberId=${sessionScope.getId}"
                 }else{
-                    location.href="/item/itemCart?itemId=${itemDTO.itemId}&cheersMemberId=${sessionScope.getId}"
+                    location.href="/item/itemCart?itemId=${itemDTO.itemId}&itemDiscount=${itemDTO.itemDiscount}&itemName=${itemDTO.itemName}&itemImageName1=${itemDTO.itemImageName1}&cheersMemberId=${sessionScope.getId}"
                 }
             },
 

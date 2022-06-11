@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,8 +53,11 @@ public class ItemRepository {
 
     }
 
-    public List<ItemDTO> cartList(Long itemId) {
-       return sql.selectList("Item.cartList",itemId);
+    public List<ItemDTO> cartList() {
+
+        return  sql.selectList("Item.cartList");
+
+
     }
 
     public CartDTO  itemDuplicate(CartDTO cartDTO) {
@@ -62,5 +66,16 @@ public class ItemRepository {
 
     public void cartCount(CartDTO cartDTO) {
         sql.update("Item.cartCount",cartDTO);
+    }
+
+    public List<CartDTO> cartqty(Long itemId) {
+      return   sql.selectList("Item.cartqty",itemId);
+    }
+
+    public int plus(Long cartId) {
+        return sql.update("Item.plus",cartId);
+    }
+
+    public int minus(Long cartId) { return sql.update("Item.minus",cartId);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -94,10 +95,22 @@ public class ItemController {
         return "redirect:/item/itemDetail?itemId="+cartDTO.getItemId();
     }
     @GetMapping("/cartList")
-    public String cartList(@RequestParam("itemId")Long itemId,Model model){
-        List<ItemDTO> itemDTOList= itemService.cartList(itemId);
-        model.addAttribute("cartList",itemDTOList);
+    public String cartList(@RequestParam("cheersMemberId")Long cheerMemberId, Model model){
+
+        List<CartDTO> cartDTOList= itemService.cartqty(cheerMemberId);
+        System.out.println(cartDTOList);
+        model.addAttribute("cartDTOList",cartDTOList);
         return "item/userCart";
+    }
+    @PostMapping("/plus")
+    public @ResponseBody boolean plus(@RequestParam("cartId")Long cartId){
+       boolean result= itemService.plus(cartId);
+        return result;
+    }
+    @PostMapping("/minus")
+    public @ResponseBody boolean minus(@RequestParam("cartId")Long cartId){
+     boolean result= itemService.minus(cartId);
+     return  result;
     }
 
 }

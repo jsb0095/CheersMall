@@ -131,9 +131,9 @@ public class ItemService {
         itemRepository.saveCart(cartDTO);
     }
 
-    public List<ItemDTO> cartList(Long itemId) {
+    public List<ItemDTO> cartList() {
 
-       List<ItemDTO> itemDTOList=itemRepository.cartList(itemId);
+       List<ItemDTO> itemDTOList=itemRepository.cartList();
         return itemDTOList;
     }
 
@@ -144,5 +144,27 @@ public class ItemService {
 
     public void cartCount(CartDTO cartDTO) {
         itemRepository.cartCount(cartDTO);
+    }
+
+    public List<CartDTO> cartqty(Long itemId) {
+       return itemRepository.cartqty(itemId);
+    }
+
+    public boolean plus(Long cartId) {
+      int plusResult = itemRepository.plus(cartId);
+      if(plusResult>0){
+          return true;
+      }else {
+          return false;
+      }
+    }
+
+    public boolean minus(Long cartId) {
+        int minusResult = itemRepository.minus(cartId);
+        if(minusResult>0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
