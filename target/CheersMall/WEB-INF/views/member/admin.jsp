@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>운영자전용페이지</title>
 </head>
 <body>
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>

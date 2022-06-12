@@ -167,4 +167,14 @@ public class ItemService {
             return false;
         }
     }
+
+    public boolean dropItem(CartDTO cartDTO) {
+      int dropResult=itemRepository.dropItem(cartDTO);
+        System.out.println(dropResult);
+      if(dropResult==1){
+        return true;
+      }else {
+          return false;
+      }
+    }
 }

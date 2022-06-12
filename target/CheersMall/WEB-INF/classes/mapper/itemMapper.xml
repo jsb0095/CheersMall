@@ -50,6 +50,9 @@
     <update id="minus" parameterType="Long">
         update cheersCart_table set  cartQTY=cartQTY-1 where cartId=#{cartId}
     </update>
+    <delete id="dropItem" parameterType="CDTO">
+        delete from cheersCart_table where cartId=#{cartId}
+    </delete>
 </mapper>
 
 

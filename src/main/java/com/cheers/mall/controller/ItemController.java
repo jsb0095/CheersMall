@@ -10,7 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 @Controller
@@ -26,7 +29,6 @@ public class ItemController {
 
     @PostMapping("/saveResult")
     public String itemSave(@ModelAttribute ItemDTO itemDTO) throws IOException {
-        System.out.println("itemDTO = " + itemDTO);
         itemService.itemSave(itemDTO);
         return "member/admin";
     }
@@ -49,7 +51,6 @@ public class ItemController {
     @GetMapping("/itemDetail")
     public String itemDetail(@RequestParam("itemId")Long itemId,Model model){
        ItemDTO itemDTO= itemService.findItemId(itemId);
-        System.out.println(itemDTO);
        model.addAttribute("itemDTO",itemDTO);
         return "item/itemDetail";
     }
@@ -59,7 +60,7 @@ public class ItemController {
         List<ItemDTO>itemDTOList =itemService.itemList();
         model.addAttribute("itemDTOList",itemDTOList);
         model.addAttribute("updateItem",itemDTO);
-        System.out.println(itemDTO);
+
         return "item/itemUpdateForm";
 
     }
@@ -96,9 +97,7 @@ public class ItemController {
     }
     @GetMapping("/cartList")
     public String cartList(@RequestParam("cheersMemberId")Long cheerMemberId, Model model){
-
         List<CartDTO> cartDTOList= itemService.cartqty(cheerMemberId);
-        System.out.println(cartDTOList);
         model.addAttribute("cartDTOList",cartDTOList);
         return "item/userCart";
     }
@@ -111,6 +110,14 @@ public class ItemController {
     public @ResponseBody boolean minus(@RequestParam("cartId")Long cartId){
      boolean result= itemService.minus(cartId);
      return  result;
+    }
+    @PostMapping("/cartItemDrop")
+    public @ResponseBody boolean dropItem(@ModelAttribute CartDTO cartDTO){
+        System.out.println("cartDTO = " + cartDTO);
+      boolean dropResult =  itemService.dropItem(cartDTO);
+        System.out.println("dropResult = " + dropResult);
+        return dropResult;
+
     }
 
 }

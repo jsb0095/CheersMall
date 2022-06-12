@@ -78,4 +78,8 @@ public class ItemRepository {
 
     public int minus(Long cartId) { return sql.update("Item.minus",cartId);
     }
+
+    public int dropItem(CartDTO cartDTO) {
+       return sql.delete("Item.dropItem",cartDTO);
+    }
 }
