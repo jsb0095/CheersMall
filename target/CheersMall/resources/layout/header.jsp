@@ -56,18 +56,18 @@
             </ul>
             <div class="text-end">
                 <c:if test="${sessionScope.getId eq null}">
-                    <button type="button" class="btn btn-outline-dark me-2" onclick="loginForm()">로그인</button>
+                    <button type="button" class="btn btn-warning" style="color: black" onclick="loginForm()">로그인</button>
                 </c:if>
 
                 <c:if test="${sessionScope.getId ne null}">
                     <b style="color: black">${sessionScope.getMemberId}님</b>
-                    <button type="button"  class="btn btn-outline-dark" onclick="logout()">로그아웃</button>
+                    <button type="button"  class="btn btn-warning" style="color: black"  onclick="logout()">로그아웃</button>
                 </c:if>
 
             </div>
             <form class="container input-group" method="post" action="/item/search">
                <input type="search"  name="q" class="form-control form-control-dark btn-outline-dark text-dark bg-white" placeholder="Search..." aria-label="Search">
-                <input type="submit" class="btn-outline-dark btn" value="검색">
+                <input type="submit" class="btn btn-warning" style="color:black;" value="검색">
             </form>
 
 
