@@ -177,4 +177,8 @@ public class ItemService {
           return false;
       }
     }
+
+    public List<ItemDTO> itemRankingList() {
+      return   itemRepository.itemRankingList();
+    }
 }

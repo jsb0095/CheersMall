@@ -53,6 +53,9 @@
                 <c:if test="${sessionScope.getMemberId eq 'admin'}">
                 <li> <a href="/item/saveForm" class="nav-link px-2 text-black" >상품입고</a></li>
                 </c:if>
+                <c:if test="${sessionScope.getMemberId eq 'admin'}">
+                    <li> <a href="/item/ranking" class="nav-link px-2 text-black" >랭킹</a></li>
+                </c:if>
             </ul>
             <div class="text-end">
                 <c:if test="${sessionScope.getId eq null}">

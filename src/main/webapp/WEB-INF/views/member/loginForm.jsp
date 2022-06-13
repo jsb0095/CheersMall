@@ -14,6 +14,7 @@
 </head>
 <body>
 <jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
+
 <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto">
     <form action="/member/login" method="post" class="container">
         <input type="text" name="memberId" placeholder="아이디"><br>

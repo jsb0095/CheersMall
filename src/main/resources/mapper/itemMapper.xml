@@ -53,6 +53,9 @@
     <delete id="dropItem" parameterType="CDTO">
         delete from cheersCart_table where cartId=#{cartId}
     </delete>
+    <select id="itemRankingList" resultType="IDTO">
+        select * from cheersItem_table order by itemSell desc
+    </select>
 </mapper>
 
 

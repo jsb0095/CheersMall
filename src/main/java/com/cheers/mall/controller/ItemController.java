@@ -42,6 +42,7 @@ public class ItemController {
     public String paging(@RequestParam(value="page",required = false,defaultValue = "1")int page, Model model){
     List<ItemDTO>itemDTOList=itemService.pagingList(page);
     PageDTO pageDTO=itemService.paging(page);
+        System.out.println(pageDTO);
     model.addAttribute("itemDTOList",itemDTOList);
     model.addAttribute("paging",pageDTO);
     return "member/cheersMain";
@@ -122,6 +123,12 @@ public class ItemController {
       boolean dropResult =  itemService.dropItem(cartDTO);
         return dropResult;
 
+    }
+    @GetMapping("ranking")
+    public String raking(Model model){
+   List<ItemDTO> rankingList= itemService.itemRankingList();
+   model.addAttribute("rankinList",rankingList);
+   return "item/rankingList";
     }
 
 }

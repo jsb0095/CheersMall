@@ -82,4 +82,8 @@ public class ItemRepository {
     public int dropItem(CartDTO cartDTO) {
        return sql.delete("Item.dropItem",cartDTO);
     }
+
+    public List<ItemDTO> itemRankingList() {
+      return   sql.selectList("Item.itemRankingList");
+    }
 }
