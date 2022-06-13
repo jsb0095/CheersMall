@@ -146,8 +146,8 @@ public class ItemService {
         itemRepository.cartCount(cartDTO);
     }
 
-    public List<CartDTO> cartqty(Long itemId) {
-       return itemRepository.cartqty(itemId);
+    public List<CartDTO> cartFindList(Long itemId) {
+       return itemRepository.cartFindList(itemId);
     }
 
     public boolean plus(Long cartId) {

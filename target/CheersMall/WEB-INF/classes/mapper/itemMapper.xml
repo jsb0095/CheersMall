@@ -41,7 +41,7 @@
     <select id="cartList" parameterType="CDTO" resultType="IDTO">
         select  * from cheersItem_table where cheersMemberId=#{cheersMemberId}
     </select>
-    <select id="cartqty" parameterType="Long" resultType="CDTO">
+    <select id="cartFindList" parameterType="Long" resultType="CDTO">
         select * from cheersCart_table where cheersMemberId=#{cheersMemberId}
     </select>
     <update id="plus" parameterType="Long">

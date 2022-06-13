@@ -68,8 +68,8 @@ public class ItemRepository {
         sql.update("Item.cartCount",cartDTO);
     }
 
-    public List<CartDTO> cartqty(Long itemId) {
-      return   sql.selectList("Item.cartqty",itemId);
+    public List<CartDTO> cartFindList(Long itemId) {
+      return   sql.selectList("Item.cartFindList",itemId);
     }
 
     public int plus(Long cartId) {

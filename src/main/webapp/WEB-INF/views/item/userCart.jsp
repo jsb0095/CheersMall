@@ -8,8 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <html>
 <head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
     <title>장바구니 </title>
     <script src="/resources/js/jquery.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -92,21 +96,6 @@
                 },
             });
         }
-    }
-    function KKO (){
-        $.ajax({
-            type:"post",
-            url:"/cls/jq/kkoPay.cls",
-            date:"cartDTOList:${cartDTOList}",
-            dataType:"json",
-            success: function (dropResult){
-                if(dropResult){
-
-
-                }else{
-                }
-            },
-        });
     }
 
 </script>

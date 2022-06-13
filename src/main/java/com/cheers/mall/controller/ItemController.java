@@ -1,8 +1,10 @@
 package com.cheers.mall.controller;
 
 import com.cheers.mall.dto.CartDTO;
+import com.cheers.mall.dto.CommentDTO;
 import com.cheers.mall.dto.ItemDTO;
 import com.cheers.mall.dto.PageDTO;
+import com.cheers.mall.service.CommentService;
 import com.cheers.mall.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/item")
 public class ItemController {
+    @Autowired
+    private CommentService commentService;
     @Autowired
     private ItemService itemService;
 
@@ -52,6 +56,9 @@ public class ItemController {
     public String itemDetail(@RequestParam("itemId")Long itemId,Model model){
        ItemDTO itemDTO= itemService.findItemId(itemId);
        model.addAttribute("itemDTO",itemDTO);
+        List<CommentDTO> commentDTOList=commentService.findAll(itemId);
+        model.addAttribute("commentList",commentDTOList);
+        System.out.println(commentDTOList);
         return "item/itemDetail";
     }
     @GetMapping("updateForm")
@@ -97,7 +104,7 @@ public class ItemController {
     }
     @GetMapping("/cartList")
     public String cartList(@RequestParam("cheersMemberId")Long cheerMemberId, Model model){
-        List<CartDTO> cartDTOList= itemService.cartqty(cheerMemberId);
+        List<CartDTO> cartDTOList= itemService.cartFindList(cheerMemberId);
         model.addAttribute("cartDTOList",cartDTOList);
         return "item/userCart";
     }
