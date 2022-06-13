@@ -58,7 +58,6 @@ public class ItemController {
        model.addAttribute("itemDTO",itemDTO);
         List<CommentDTO> commentDTOList=commentService.findAll(itemId);
         model.addAttribute("commentList",commentDTOList);
-        System.out.println(commentDTOList);
         return "item/itemDetail";
     }
     @GetMapping("updateForm")
@@ -120,9 +119,7 @@ public class ItemController {
     }
     @PostMapping("/cartItemDrop")
     public @ResponseBody boolean dropItem(@ModelAttribute CartDTO cartDTO){
-        System.out.println("cartDTO = " + cartDTO);
       boolean dropResult =  itemService.dropItem(cartDTO);
-        System.out.println("dropResult = " + dropResult);
         return dropResult;
 
     }

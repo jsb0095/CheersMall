@@ -94,14 +94,15 @@
                     <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
                                         value="${comment.commentDate}"></fmt:formatDate></td>
                     <td><button onclick="commentUpdate(${comment.commentId})">댓글수정</button></td>
-                    <td><button onclick="commentDelete()">댓글삭제</button></td>
+                    <td><button onclick="commentDelete(${comment.commentId},${comment.itemId})">댓글삭제</button></td>
                 </tr>
             </c:forEach>
 
 </body>
 <script>
-function commentUpdate(commentId){
-location.href="/comment/update?commentId="+commentId;
+function commentDelete(commentId,commentItemId){
+location.href="/comment/delete?commentId=" + commentId + "&commentItemId=" + commentItemId;
+
 }
 
     function itemUpdate(){
