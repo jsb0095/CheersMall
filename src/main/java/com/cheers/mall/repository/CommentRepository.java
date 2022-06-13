@@ -28,4 +28,8 @@ public class CommentRepository {
         System.out.println("commentDTO = " + commentDTO);
         sql.update("COMMENT.commentUpdate",commentDTO);
     }
+
+    public void simpleBuy(Long itemId) {
+        sql.update("COMMENT.simpleBuy",itemId);
+    }
 }

@@ -57,7 +57,7 @@ public class ItemService {
     private static final int PAGE_LIMIT=3;
     private static final int BLOCK_LIMIT=3;
     public List<ItemDTO> pagingList(int page) {
-        int pagingStart=(page-1)* PAGE_LIMIT;
+        int pagingStart=(page+1)* PAGE_LIMIT;
         Map<String, Integer> pagingParam= new HashMap<>();
         pagingParam.put("start",pagingStart);
         pagingParam.put("limit",PAGE_LIMIT);

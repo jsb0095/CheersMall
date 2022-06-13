@@ -32,4 +32,9 @@ public class CommentController {
     commentService.commentUpdate(commentDTO);
     return "redirect:/item/itemDetail?itemId="+commentDTO.getItemId();
     }
+    @GetMapping ("/simpleBuy")
+    public String simpleBuy(@RequestParam("itemId")Long itemId){
+        commentService.simpleBuy(itemId);
+        return "redirect:/item/itemDetail?itemId="+itemId;
+    }
 }
