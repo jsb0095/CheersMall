@@ -15,7 +15,7 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
-<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 <table class="table">
     <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto">
         <form action="/member/update" method="post">

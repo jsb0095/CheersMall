@@ -12,7 +12,7 @@
     <title>회원목록</title>
 </head>
 <body>
-<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 <table class="table">
     <tr>
         <th>회원번호</th>

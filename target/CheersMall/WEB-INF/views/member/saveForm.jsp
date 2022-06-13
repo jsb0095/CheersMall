@@ -17,7 +17,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </head>
 <body>
-<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto" >
 <form action="/member/save" method="post" enctype="multipart/form-data">
     <input type="text" class="gap-2" name="memberId" id="duplicateMemberId" onblur="duplicate()" placeholder="아이디"><br>

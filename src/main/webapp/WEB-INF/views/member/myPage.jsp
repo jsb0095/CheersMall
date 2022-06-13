@@ -15,7 +15,7 @@
     <script src="/resources/js/jquery.js"></script>
 </head>
 <body>
-<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 <table class="table">
     <tr>
         <th>주문번호</th>

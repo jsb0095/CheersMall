@@ -11,7 +11,7 @@
     <title>상품입고</title>
 </head>
 <body>
-<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 
 <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto">
 <form method="post" action="/item/saveResult" enctype="multipart/form-data">

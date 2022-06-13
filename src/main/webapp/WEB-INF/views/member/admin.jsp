@@ -12,7 +12,7 @@
     <title>운영자전용페이지</title>
 </head>
 <body>
-<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 
 
 </body>

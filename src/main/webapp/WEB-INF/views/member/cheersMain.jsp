@@ -16,7 +16,7 @@
     <title>cheers🍺</title>
 </head>
 <body>
-<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 
 
 <div style="margin:0 300px; width: 1200px; height: 850px">

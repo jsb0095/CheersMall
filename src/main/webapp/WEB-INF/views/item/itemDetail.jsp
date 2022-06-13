@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 <div style="display: flex; margin: auto" >
 <div style="margin-left:220px; width: 550px; height: 650px; flex:1">
     <span class="a2" style="margin-left: 150px; text-align: center">
@@ -52,11 +52,11 @@
          <tr style="width: 300px;font-size: 30px;padding-bottom: 20px">
              <td>배송비: </td><td>${itemDTO.itemDelivery}원</td>
          </tr>
-             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn-outline-light bg-warning" style="color: white"  onclick="itemBuy()">상품구매</button></td>
-             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn-outline-light bg-warning"  style="color: white"   onclick="cartAdd()">장바구니추가</button></td>
+             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn btn-warning" style="color: black"  onclick="itemBuy()">상품구매</button></td>
+             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn btn-warning"  style="color: black"   onclick="cartAdd()">장바구니추가</button></td>
          <c:if test="${sessionScope.getMemberId eq 'admin'}">
-             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn-outline-light bg-warning" style="color: white"   onclick="itemUpdate()">상품수정</button></td>
-             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn-outline-light bg-warning" style="color: white"   onclick="itemDelete()">상품삭제</button></td>
+             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn-outline-light bg-warning" style="color: black"   onclick="itemUpdate()">상품수정</button></td>
+             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn-outline-light bg-warning" style="color: black"   onclick="itemDelete()">상품삭제</button></td>
          </c:if>
      </table>
     </div>
@@ -84,8 +84,10 @@
                 <th>작성자</th>
                 <th>내용</th>
                 <th>작성시간</th>
+                <c:if test="${sessionScope.getMemberId ne 'null'}">
                 <th>댓글수정</th>
                 <th>댓글삭제</th>
+                </c:if>
             </tr>
             <c:forEach items="${commentList}" var="comment">
                 <tr>
@@ -93,15 +95,33 @@
                     <td id="contents${comment.commentId}">${comment.commentContents}</td>
                     <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
                                         value="${comment.commentDate}"></fmt:formatDate></td>
-                    <td><button onclick="commentUpdate(${comment.commentId})">댓글수정</button></td>
-                    <td><button onclick="commentDelete(${comment.commentId},${comment.itemId})">댓글삭제</button></td>
+                    <c:if test="${comment.commentWriter eq sessionScope.getMemberId}">
+                    <td><button class="btn btn-warning" onclick="commentUpdate('${comment.commentId}','${comment.commentContents}','${comment.itemId}')">댓글수정</button></td>
+                    <td><button class="btn btn-warning" onclick="commentDelete('${comment.commentId}','${comment.itemId}')">댓글삭제</button></td>
+                    </c:if>
                 </tr>
             </c:forEach>
+        </table>
+    </div>
+
+
 
 </body>
 <script>
+
+    function commentUpdate(commentId,commentContents,itemId){
+       const divId =document.getElementById("comment-list");
+        divId.innerHTML='<form action="/comment/update" method="post">'
+                    +'<input type="text" value="' + itemId + '" name="itemId" readonly>'
+                    +'<input type="text" value="' + commentId + '" name="commentId" readonly>'
+                    +'<input type="text" value="'+ commentContents +'" name="commentContents">'
+                    +'<button>댓글수정</button></form>';
+    }
+
 function commentDelete(commentId,commentItemId){
-location.href="/comment/delete?commentId=" + commentId + "&commentItemId=" + commentItemId;
+   const dropResult= confirm("정말 삭제하시겠습니까 ?")
+    if(dropResult){location.href="/comment/delete?commentId=" + commentId + "&commentItemId=" + commentItemId;}
+
 
 }
 
@@ -113,7 +133,7 @@ location.href="/comment/delete?commentId=" + commentId + "&commentItemId=" + com
         location.href="/item/itemDelete?itemId=${itemDTO.itemId}"
     }
     function cartAdd(){
-        alert("징비구니에 상품이 추가되었습니다.")
+        alert("징비구니에 상품이 추가되었습니다.");
         $.ajax({
         type:"post",
             url:"/item/cartDuplicate",
@@ -145,6 +165,8 @@ location.href="/comment/delete?commentId=" + commentId + "&commentItemId=" + com
             output += "<th>작성자</th>";
             output += "<th>내용</th>";
             output += "<th>작성시간</th></tr>";
+            output += "<th>수정</th></tr>";
+            output += "<th>삭제</th></tr>";
 
             for (let i in commentDTOList){
                 output += "<tr>";
@@ -152,6 +174,8 @@ location.href="/comment/delete?commentId=" + commentId + "&commentItemId=" + com
                 output += "<td>" + commentDTOList[i].commentWriter + "</td>";
                 output += "<td>" + commentDTOList[i].commentContents + "</td>";
                 output += "<td>" + moment(commentDTOList[i].commentDate).format("YYYY-MM-DD HH:mm:ss") + "</td>";
+                output += "<td>" + '<button class="btn btn-warning" onclick="commentUpdate(' + ${comment.commentId} + ',' + ${comment.commentContents}+ ',' +${comment.itemId} + ')">댓글수정</button>+"</td>"';
+                output += "<td>" + '<button class="btn btn-warning" onclick="commentDelete(' + ${comment.commentId} + ',' + ${comment.itemId}+')">댓글삭제</button>+"</td>"';
                 output += "</tr>";//moment 순간
             }
             output += "</table>";
