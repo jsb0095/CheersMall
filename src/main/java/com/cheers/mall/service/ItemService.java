@@ -172,7 +172,8 @@ public class ItemService {
 
     public boolean dropItem(CartDTO cartDTO) {
       int dropResult=itemRepository.dropItem(cartDTO);
-        System.out.println(dropResult);
+        System.out.println("ItemService.dropItem");
+        System.out.println(cartDTO);
       if(dropResult==1){
         return true;
       }else {
@@ -192,5 +193,17 @@ public class ItemService {
 
     public CartDTO findByCartId(Long cartId) {
        return itemRepository.findByCartId(cartId);
+    }
+    public void simpleBuy(Long itemId) {
+        itemRepository.simpleBuy(itemId);
+    }
+
+    public boolean kkoPayCount(CartDTO cartDTO) {
+      int countResult =  itemRepository.kkoPayCount(cartDTO);
+        if(countResult>0){
+            return true;
+        }else {
+            return false;
+        }
     }
 }

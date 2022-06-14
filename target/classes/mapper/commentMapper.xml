@@ -17,9 +17,7 @@
     <update id="commentUpdate" parameterType="commentDTO">
         update cheersComment_table set commentContents=#{commentContents} where commentId=#{commentId}
     </update>
-  <update id="simpleBuy" parameterType="Long">
-      update cheersItem_table set itemSell=itemSell+1 , itemStock=itemStock-1 where itemId=#{itemId}
-  </update>
+
 </mapper>
 
 

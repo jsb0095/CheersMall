@@ -25,7 +25,5 @@ public class CommentService {
         commentRepository.commentUpdate(commentDTO);
     }
 
-    public void simpleBuy(Long itemId) {
-        commentRepository.simpleBuy(itemId);
-    }
+
 }

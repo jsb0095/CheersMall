@@ -133,6 +133,7 @@ public class ItemController {
     @PostMapping("/cartItemDrop")
     public @ResponseBody boolean dropItem(@ModelAttribute CartDTO cartDTO) {
         boolean dropResult = itemService.dropItem(cartDTO);
+        System.out.println(dropResult);
         return dropResult;
 
     }
@@ -155,9 +156,20 @@ public class ItemController {
     public String kkoPay(@RequestParam("cheersMemberId")Long cheersMemberId,@RequestParam("cartId")Long cartId,Model model){
     MemberDTO memberDTO= memberService.findById(cheersMemberId);
     CartDTO cartDTO= itemService.findByCartId(cartId);
+
     model.addAttribute("memberDTO",memberDTO);
-        System.out.println("cartDTO = " + cartDTO);
     model.addAttribute("cartDTO",cartDTO);
+//    itemService.dropItem(cartDTO);
     return "member/kkoPay";
+    }
+    @GetMapping ("/simpleBuy")
+    public String simpleBuy(@RequestParam("itemId")Long itemId){
+        itemService.simpleBuy(itemId);
+        return "redirect:/item/itemDetail?itemId="+itemId;
+    }
+    @PostMapping("kkoPayCount")
+    public @ResponseBody boolean kkoPayCount(@ModelAttribute CartDTO cartDTO){
+       boolean result = itemService.kkoPayCount(cartDTO);
+        return result;
     }
 }

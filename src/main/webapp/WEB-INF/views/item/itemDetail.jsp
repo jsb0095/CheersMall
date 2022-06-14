@@ -115,7 +115,7 @@
     function itemBuy(itemId){
       const buyResult=  confirm("상품을 구매하시겠습니까 ?")
         if(buyResult){
-            location.href="/comment/simpleBuy?itemId="+itemId;
+            location.href="/item/simpleBuy?itemId="+itemId;
         }
     }
 

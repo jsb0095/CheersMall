@@ -27,14 +27,9 @@ public class CommentController {
     }
     @PostMapping("/update")
     public String commentUpdate(@ModelAttribute CommentDTO commentDTO){
-        System.out.println("CommentController.commentUpdate");
-        System.out.println("commentDTO = " + commentDTO);
+
     commentService.commentUpdate(commentDTO);
     return "redirect:/item/itemDetail?itemId="+commentDTO.getItemId();
     }
-    @GetMapping ("/simpleBuy")
-    public String simpleBuy(@RequestParam("itemId")Long itemId){
-        commentService.simpleBuy(itemId);
-        return "redirect:/item/itemDetail?itemId="+itemId;
-    }
+
 }

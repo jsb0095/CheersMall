@@ -81,7 +81,10 @@ public class ItemRepository {
     }
 
     public int dropItem(CartDTO cartDTO) {
-       return sql.delete("Item.dropItem",cartDTO);
+
+        int dropResult = sql.delete("Item.dropItem",cartDTO);
+        System.out.println(dropResult);
+        return dropResult;
     }
 
     public List<ItemDTO> itemRankingList() {
@@ -96,5 +99,12 @@ public class ItemRepository {
 
     public CartDTO findByCartId(Long cartId) {
       return   sql.selectOne("Item.findByCartId",cartId);
+    }
+    public void simpleBuy(Long itemId) {
+        sql.update("Item.simpleBuy",itemId);
+    }
+
+    public int kkoPayCount(CartDTO cartDTO) {
+      return   sql.update("Item.kkoPayCount",cartDTO);
     }
 }

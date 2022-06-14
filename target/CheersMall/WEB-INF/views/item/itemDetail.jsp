@@ -52,12 +52,16 @@
          <tr style="width: 300px;font-size: 30px;padding-bottom: 20px">
              <td>배송비: </td><td>${itemDTO.itemDelivery}원</td>
          </tr>
+         <tr>
              <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn btn-warning" style="color: black"  onclick="itemBuy(${itemDTO.itemId})">상품구매</button></td>
              <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn btn-warning"  style="color: black"   onclick="cartAdd()">장바구니추가</button></td>
+         </tr>
+         <tr>
          <c:if test="${sessionScope.getMemberId eq 'admin'}">
-             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn-outline-light bg-warning" style="color: black"   onclick="itemUpdate()">상품수정</button></td>
-             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn-outline-light bg-warning" style="color: black"   onclick="itemDelete()">상품삭제</button></td>
+             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn btn-warning"   onclick="itemUpdate()">상품수정</button></td>
+             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn btn-warning"   onclick="itemDelete()">상품삭제</button></td>
          </c:if>
+         </tr>
      </table>
     </div>
 </div>
@@ -111,7 +115,7 @@
     function itemBuy(itemId){
       const buyResult=  confirm("상품을 구매하시겠습니까 ?")
         if(buyResult){
-            location.href="/comment/simpleBuy?itemId="+itemId;
+            location.href="/item/simpleBuy?itemId="+itemId;
         }
     }
 
