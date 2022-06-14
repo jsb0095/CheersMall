@@ -50,21 +50,21 @@
                 }
             });
             const sellQTY = "${cartDTO.cartQTY}";
-            const sellItem = "${cartDTO.itemId}"
+            const sellItem = "${cartDTO.itemId}";
+            console.log(sellItem);
             $.ajax({
+
                 type: "post",
                 url: "/item/kkoPayCount",
                 async: false,
                 data: {"sellQTY":sellQTY,"sellItem":sellItem} ,
-                dataType: "json",
+                dataType: "text",
                 success: function (result) {
-                    if(result){alert("카운트 성공!");
+                    console.log(result)
+                    if(result==="yes"){alert("카운트 성공!");
                     }else {
                         alert("실패")
                     }
-
-
-
                 }
             });
         }
