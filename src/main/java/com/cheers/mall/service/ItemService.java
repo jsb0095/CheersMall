@@ -2,6 +2,7 @@ package com.cheers.mall.service;
 
 import com.cheers.mall.dto.CartDTO;
 import com.cheers.mall.dto.ItemDTO;
+import com.cheers.mall.dto.MemberDTO;
 import com.cheers.mall.dto.PageDTO;
 import com.cheers.mall.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -180,5 +182,15 @@ public class ItemService {
 
     public List<ItemDTO> itemRankingList() {
       return   itemRepository.itemRankingList();
+    }
+
+    public void rankingAdd(ItemDTO itemDTO) {
+        itemRepository.rankinAdd(itemDTO);
+
+    }
+
+
+    public CartDTO findByCartId(Long cartId) {
+       return itemRepository.findByCartId(cartId);
     }
 }

@@ -56,6 +56,12 @@
     <select id="itemRankingList" resultType="IDTO">
         select * from cheersItem_table order by itemSell desc
     </select>
+    <update id="rankingAdd" parameterType="IDTO">
+        update cheersItem_table set itemName=#{itemName} where itemId=#{itemId}
+    </update>
+    <select id="findByCartId" parameterType="Long" resultType="CDTO">
+        select * from cheersCart_table where cartId=#{cartId}
+    </select>
 </mapper>
 
 

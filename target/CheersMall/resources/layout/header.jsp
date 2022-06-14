@@ -24,7 +24,7 @@
 </head>
 <body>
 <header class="p-3 bg-white text-white" >
-    <div class="container">
+    <div class="container" style="margin: auto">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <c:if test="${sessionScope.getMemberId ne 'admin'}">
             <a href="/member/cheersMain" class="d-flex align-items-center mb-2 mb-lg-0  text-decoration-none"><input type="image" style="display: block  ;vertical-align:bottom" src="/resources/jpg/logo4.jpg" width="300" height=70">
@@ -52,6 +52,9 @@
                 </c:if>
                 <c:if test="${sessionScope.getMemberId eq 'admin'}">
                 <li> <a href="/item/saveForm" class="nav-link px-2 text-black" >상품입고</a></li>
+                </c:if>
+                <c:if test="${sessionScope.getMemberId eq 'admin'}">
+                    <li> <a href="/item/ranking" class="nav-link px-2 text-black" >랭킹</a></li>
                 </c:if>
             </ul>
             <div class="text-end">

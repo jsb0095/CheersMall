@@ -1,11 +1,9 @@
 package com.cheers.mall.controller;
 
-import com.cheers.mall.dto.CartDTO;
-import com.cheers.mall.dto.CommentDTO;
-import com.cheers.mall.dto.ItemDTO;
-import com.cheers.mall.dto.PageDTO;
+import com.cheers.mall.dto.*;
 import com.cheers.mall.service.CommentService;
 import com.cheers.mall.service.ItemService;
+import com.cheers.mall.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,113 +20,144 @@ import java.util.List;
 @RequestMapping("/item")
 public class ItemController {
     @Autowired
+    private MemberService memberService;
+    @Autowired
     private CommentService commentService;
     @Autowired
     private ItemService itemService;
 
     @GetMapping("/saveForm")
-    public String itemSaveForm(){
+    public String itemSaveForm() {
         return "item/itemSaveForm";
     }
 
     @PostMapping("/saveResult")
     public String itemSave(@ModelAttribute ItemDTO itemDTO) throws IOException {
         itemService.itemSave(itemDTO);
-        return "member/admin";
+        return "redirect:/member/admin";
     }
 
 
     @GetMapping("/paging")
-    public String paging(@RequestParam(value="page",required = false,defaultValue = "1")int page, Model model){
-    List<ItemDTO>itemDTOList=itemService.pagingList(page);
-    PageDTO pageDTO=itemService.paging(page);
+    public String paging(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
+        List<ItemDTO> itemDTOList = itemService.pagingList(page);
+        PageDTO pageDTO = itemService.paging(page);
         System.out.println(pageDTO);
-    model.addAttribute("itemDTOList",itemDTOList);
-    model.addAttribute("paging",pageDTO);
-    return "member/cheersMain";
-}
-    @PostMapping("/search")
-    public String search(@RequestParam("q")String q,Model model){
-       List<ItemDTO> itemDTOList= itemService.search(q);
-       model.addAttribute("itemDTOList",itemDTOList);
-    return "member/cheersMain";
+        model.addAttribute("itemDTOList", itemDTOList);
+        model.addAttribute("paging", pageDTO);
+        return "member/cheersMain";
     }
+
+    @PostMapping("/search")
+    public String search(@RequestParam("q") String q, Model model) {
+        List<ItemDTO> itemDTOList = itemService.search(q);
+        model.addAttribute("itemDTOList", itemDTOList);
+        return "member/cheersMain";
+    }
+
     @GetMapping("/itemDetail")
-    public String itemDetail(@RequestParam("itemId")Long itemId,Model model){
-       ItemDTO itemDTO= itemService.findItemId(itemId);
-       model.addAttribute("itemDTO",itemDTO);
-        List<CommentDTO> commentDTOList=commentService.findAll(itemId);
-        model.addAttribute("commentList",commentDTOList);
+    public String itemDetail(@RequestParam("itemId") Long itemId, Model model) {
+        ItemDTO itemDTO = itemService.findItemId(itemId);
+        model.addAttribute("itemDTO", itemDTO);
+        List<CommentDTO> commentDTOList = commentService.findAll(itemId);
+        model.addAttribute("commentList", commentDTOList);
         return "item/itemDetail";
     }
+
     @GetMapping("updateForm")
-    public String itemUpdateForm(@RequestParam("itemId")Long itemId,Model model){
-      ItemDTO itemDTO=  itemService.findItemId(itemId);
-        List<ItemDTO>itemDTOList =itemService.itemList();
-        model.addAttribute("itemDTOList",itemDTOList);
-        model.addAttribute("updateItem",itemDTO);
+    public String itemUpdateForm(@RequestParam("itemId") Long itemId, Model model) {
+        ItemDTO itemDTO = itemService.findItemId(itemId);
+        List<ItemDTO> itemDTOList = itemService.itemList();
+        model.addAttribute("itemDTOList", itemDTOList);
+        model.addAttribute("updateItem", itemDTO);
 
         return "item/itemUpdateForm";
 
     }
+
     @PostMapping("/itemUpdate")
-    public String itemUpdate(@ModelAttribute ItemDTO itemDTO,Model model) throws IOException {
-        List<ItemDTO>itemDTOList =itemService.itemList();
-        model.addAttribute("itemDTOList",itemDTOList);
+    public String itemUpdate(@ModelAttribute ItemDTO itemDTO, Model model) throws IOException {
+        List<ItemDTO> itemDTOList = itemService.itemList();
+        model.addAttribute("itemDTOList", itemDTOList);
         itemService.itemUpdate(itemDTO);
         return "redirect:/member/admin";
     }
+
     @GetMapping("/itemDelete")
-    public String itemDelete(@RequestParam("itemId")Long itemId){
+    public String itemDelete(@RequestParam("itemId") Long itemId) {
         itemService.itemDelete(itemId);
         return "redirect:/member/admin";
     }
+
     @GetMapping("/itemCart")
-    public String saveCart(@ModelAttribute CartDTO cartDTO){
+    public String saveCart(@ModelAttribute CartDTO cartDTO) {
         itemService.saveCart(cartDTO);
-        return "redirect:/item/itemDetail?itemId="+cartDTO.getItemId();
+        return "redirect:/item/itemDetail?itemId=" + cartDTO.getItemId();
     }
+
     @PostMapping("/cartDuplicate")
-    public @ResponseBody String itemDuplicate(@ModelAttribute CartDTO cartDTO){
-       CartDTO result = itemService.itemDuplicate(cartDTO);
-       if(result!=null) {
-           return "ok";
-       }else {
-           return "no";
-       }
+    public @ResponseBody String itemDuplicate(@ModelAttribute CartDTO cartDTO) {
+        CartDTO result = itemService.itemDuplicate(cartDTO);
+        if (result != null) {
+            return "ok";
+        } else {
+            return "no";
+        }
     }
+
     @GetMapping("/cartCount")
-    public String cartCount(@ModelAttribute CartDTO cartDTO){
+    public String cartCount(@ModelAttribute CartDTO cartDTO) {
         itemService.cartCount(cartDTO);
-        return "redirect:/item/itemDetail?itemId="+cartDTO.getItemId();
+        return "redirect:/item/itemDetail?itemId=" + cartDTO.getItemId();
     }
+
     @GetMapping("/cartList")
-    public String cartList(@RequestParam("cheersMemberId")Long cheerMemberId, Model model){
-        List<CartDTO> cartDTOList= itemService.cartFindList(cheerMemberId);
-        model.addAttribute("cartDTOList",cartDTOList);
+    public String cartList(@RequestParam("cheersMemberId") Long cheerMemberId, Model model) {
+        List<CartDTO> cartDTOList = itemService.cartFindList(cheerMemberId);
+        model.addAttribute("cartDTOList", cartDTOList);
         return "item/userCart";
     }
+
     @PostMapping("/plus")
-    public @ResponseBody boolean plus(@RequestParam("cartId")Long cartId){
-       boolean result= itemService.plus(cartId);
+    public @ResponseBody boolean plus(@RequestParam("cartId") Long cartId) {
+        boolean result = itemService.plus(cartId);
         return result;
     }
+
     @PostMapping("/minus")
-    public @ResponseBody boolean minus(@RequestParam("cartId")Long cartId){
-     boolean result= itemService.minus(cartId);
-     return  result;
+    public @ResponseBody boolean minus(@RequestParam("cartId") Long cartId) {
+        boolean result = itemService.minus(cartId);
+        return result;
     }
+
     @PostMapping("/cartItemDrop")
-    public @ResponseBody boolean dropItem(@ModelAttribute CartDTO cartDTO){
-      boolean dropResult =  itemService.dropItem(cartDTO);
+    public @ResponseBody boolean dropItem(@ModelAttribute CartDTO cartDTO) {
+        boolean dropResult = itemService.dropItem(cartDTO);
         return dropResult;
 
     }
+
     @GetMapping("ranking")
-    public String raking(Model model){
-   List<ItemDTO> rankingList= itemService.itemRankingList();
-   model.addAttribute("rankinList",rankingList);
-   return "item/rankingList";
+    public String rakingPage(Model model) {
+        List<ItemDTO> rankingList = itemService.itemRankingList();
+        model.addAttribute("rankinList", rankingList);
+        return "item/rankingList";
     }
 
+    @GetMapping("/rank")
+    public String rankingAdd(@ModelAttribute ItemDTO itemDTO) {
+
+        itemService.rankingAdd(itemDTO);
+
+        return "redirect:/item/ranking";
+    }
+    @GetMapping("/kkoPay")
+    public String kkoPay(@RequestParam("cheersMemberId")Long cheersMemberId,@RequestParam("cartId")Long cartId,Model model){
+    MemberDTO memberDTO= memberService.findById(cheersMemberId);
+    CartDTO cartDTO= itemService.findByCartId(cartId);
+    model.addAttribute("memberDTO",memberDTO);
+        System.out.println("cartDTO = " + cartDTO);
+    model.addAttribute("cartDTO",cartDTO);
+    return "member/kkoPay";
+    }
 }

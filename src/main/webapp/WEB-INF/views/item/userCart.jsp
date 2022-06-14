@@ -34,7 +34,7 @@
     </tr>
     <c:forEach var="cart" items="${cartDTOList}">
     <tr>
-        <td><input type="checkbox" value="${cart.cartId}">&nbsp;&nbsp;&nbsp;&nbsp;<img style="margin: auto" width="100px" height="100px" src="${pageContext.request.contextPath}/upload/${cart.itemImageName1}"></td>
+        <td><input id="itemCheckBoxId" type="checkbox" value="${cart.cartId}">&nbsp;&nbsp;&nbsp;&nbsp;<img style="margin: auto" width="100px" height="100px" src="${pageContext.request.contextPath}/upload/${cart.itemImageName1}"></td>
         <td>${cart.itemDiscount*cart.cartQTY}원</td>
         <td>${cart.itemName}</td>
         <td><input class="col-1" type="text" value="${cart.cartQTY}" readonly> <input type="button" class="quantity_modify_plus" value="+" onclick="plus(${cart.cartId},${cart.cartQTY})">
@@ -43,9 +43,17 @@
     </tr>
     </c:forEach>
     </table>
-   <button onclick="KKO()">카카오페이</button>
+   <button class="btn btn-warning" style="color: black" onclick="KKO()">카카오페이</button>
 </body>
 <script>
+
+   function KKO(){
+       const cartId = document.getElementById("itemCheckBoxId").value;
+
+       location.href="/item/kkoPay?cheersMemberId=${sessionScope.getId}" + "&cartId="+cartId;
+
+   }
+
     function plus(cartId,cartQTY){
         if (cartQTY<0){
             alert("상품의 수량이 0개입니다")

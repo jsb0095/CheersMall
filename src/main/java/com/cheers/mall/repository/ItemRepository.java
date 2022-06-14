@@ -2,6 +2,7 @@ package com.cheers.mall.repository;
 
 import com.cheers.mall.dto.CartDTO;
 import com.cheers.mall.dto.ItemDTO;
+import com.cheers.mall.dto.MemberDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -85,5 +86,15 @@ public class ItemRepository {
 
     public List<ItemDTO> itemRankingList() {
       return   sql.selectList("Item.itemRankingList");
+    }
+
+    public void rankinAdd(ItemDTO itemDTO) {
+
+        sql.update("Item.rankingAdd",itemDTO);
+    }
+
+
+    public CartDTO findByCartId(Long cartId) {
+      return   sql.selectOne("Item.findByCartId",cartId);
     }
 }
