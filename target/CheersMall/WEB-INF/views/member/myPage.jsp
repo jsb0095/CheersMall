@@ -22,7 +22,7 @@
         <th>아이디</th>
         <th>주문날짜</th>
         <th>주문명</th>
-        <th>주문자번호</th>
+        <th>주문자전화번호</th>
         <th>주소1</th>
         <th>주소2</th>
         <th>주소3</th>
@@ -42,10 +42,10 @@
             <td>${oder.oderAddress1}</td>
             <td>${oder.oderAddress2}</td>
             <td>${oder.oderAddress3}</td>
-            <td>${oder.oderAmount}</td>
-            <td>${oder.oderPayment+oder.oderAmount+oder.oderDelivery}</td>
+            <td>${oder.oderAmount}개</td>
+            <td>${oder.oderPayment+oder.oderAmount+oder.oderDelivery}원</td>
             <td>${oder.oderInvoice}</td>
-            <td>${oder.oderDelivery}</td>
+            <td>${oder.oderDelivery}원</td>
 
 
 
