@@ -66,7 +66,7 @@
         update cheersItem_table set itemSell=itemSell+1 , itemStock=itemStock-1 where itemId=#{itemId}
     </update>
     <update id="kkoPayCount" parameterType="CDTO">
-        update cheersItem_table set itemSell=itemSell+itemQTY, itemStock=itemStock-itemQTY where itemId=#{itemId}
+        update cheersItem_table set itemSell=itemSell+#{cartQTY}, itemStock=itemStock-#{cartQTY} where itemId=#{itemId}
     </update>
 </mapper>
 

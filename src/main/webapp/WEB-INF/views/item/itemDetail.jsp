@@ -88,10 +88,9 @@
                 <th>작성자</th>
                 <th>내용</th>
                 <th>작성시간</th>
-                <c:if test="${sessionScope.getMemberId ne 'null'}">
                 <th>댓글수정</th>
                 <th>댓글삭제</th>
-                </c:if>
+
             </tr>
             <c:forEach items="${commentList}" var="comment">
                 <tr>
@@ -99,10 +98,8 @@
                     <td id="contents${comment.commentId}">${comment.commentContents}</td>
                     <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
                                         value="${comment.commentDate}"></fmt:formatDate></td>
-                    <c:if test="${comment.commentWriter eq sessionScope.getMemberId}">
                     <td><button class="btn btn-warning" onclick="commentUpdate('${comment.commentId}','${comment.commentContents}','${comment.itemId}')">댓글수정</button></td>
                     <td><button class="btn btn-warning" onclick="commentDelete('${comment.commentId}','${comment.itemId}')">댓글삭제</button></td>
-                    </c:if>
                 </tr>
             </c:forEach>
         </table>
@@ -174,9 +171,9 @@ function commentDelete(commentId,commentItemId){
             output += "<tr><th>댓글번호</th>";
             output += "<th>작성자</th>";
             output += "<th>내용</th>";
-            output += "<th>작성시간</th></tr>";
-            output += "<th>수정</th></tr>";
-            output += "<th>삭제</th></tr>";
+            output += "<th>작성시간</th>";
+            output += "<th>댓글수정</th>";
+            output += "<th>댓글삭제</th></tr>";
 
             for (let i in commentDTOList){
                 output += "<tr>";
@@ -184,8 +181,11 @@ function commentDelete(commentId,commentItemId){
                 output += "<td>" + commentDTOList[i].commentWriter + "</td>";
                 output += "<td>" + commentDTOList[i].commentContents + "</td>";
                 output += "<td>" + moment(commentDTOList[i].commentDate).format("YYYY-MM-DD HH:mm:ss") + "</td>";
-                output += "<td>" + '<button class="btn btn-warning" onclick="commentUpdate(' + ${comment.commentId} + ',' + ${comment.commentContents}+ ',' +${comment.itemId} + ')">댓글수정</button>+"</td>"';
-                output += "<td>" + '<button class="btn btn-warning" onclick="commentDelete(' + ${comment.commentId} + ',' + ${comment.itemId}+')">댓글삭제</button>+"</td>"';
+                output += "<td>" + "<button class='btn btn-warning' onclick='commentUpdate(" + commentDTOList[i].commentId + "," + commentDTOList[i].commentContents + "," + commentDTOList[i].itemId +")'>" + "댓글수정" + "</button></td>";
+                output += "<td>" + "<button class='btn btn-warning' onclick='commentDelete(" + commentDTOList[i].commentId + "," + commentDTOList[i].itemId +")'>" + "삭제" + "</button></td>";
+
+                <%--output += "<td>" + '<button class="btn btn-warning" onclick="commentUpdate(' + ${comment.commentId} + ',' + ${comment.commentContents}+ ',' +${comment.itemId} + ')">' + "댓글수정" + "</button>" +"</td>"';--%>
+                <%--output += "<td>" + '<button class="btn btn-warning" onclick="commentDelete(' + ${comment.commentId} + ',' + ${comment.itemId}+')">댓글삭제</button>+"</td>"';--%>
                 output += "</tr>";//moment 순간
             }
             output += "</table>";

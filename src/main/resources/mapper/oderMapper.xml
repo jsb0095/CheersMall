@@ -7,4 +7,8 @@
         <select id="myPage" resultType="ODTO" parameterType="String">
             select * from cheersOder_table where memberId=#{memberId}
         </select>
+    <insert id="orderSave" parameterType="ODTO">
+        insert into cheersOder_table(oderDate,memberId,oderName,oderMobile,oderAddress1,oderAddress2,oderAddress3,oderAmount,oderPayment,oderInvoice,oderDelivery)
+        values(now(),#{memberId},#{oderName},#{oderMobile},#{oderAddress1},#{oderAddress2},#{oderAddress3},#{oderAmount},#{oderPayment},#{oderInvoice},#{oderDelivery})
+    </insert>
 </mapper>

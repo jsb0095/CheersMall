@@ -16,6 +16,6 @@ public class OderDTO {
     String oderAddress3;
     int oderAmount;
     int oderPayment;
-    int oderInvoice;
-    int oderDelivarry;
+    Long oderInvoice;
+    int oderDelivery;
 }

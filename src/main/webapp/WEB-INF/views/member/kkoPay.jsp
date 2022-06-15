@@ -40,7 +40,6 @@
                 dataType: "json",
                 success: function (dropResult) {
                     if (dropResult) {
-                        location.href = "/item/cartList?cheersMemberId=${sessionScope.getId}"
                         var msg = '결제가 완료되었습니다.';
                         alert(msg);
                         alert("구매하신 상품은 자동으로 삭제됩니다!");
@@ -49,27 +48,54 @@
                     }
                 }
             });
-            const sellQTY = "${cartDTO.cartQTY}";
-            const sellItem = "${cartDTO.itemId}";
-            console.log(sellItem);
+
+            const cartQTY = "${cartDTO.cartQTY}";
+            const itemId = "${cartDTO.itemId}";
             $.ajax({
 
                 type: "post",
                 url: "/item/kkoPayCount",
                 async: false,
-                data: {"sellQTY":sellQTY,"sellItem":sellItem} ,
+                data: {"cartQTY":cartQTY,"itemId":itemId},
                 dataType: "text",
                 success: function (result) {
                     console.log(result)
-                    if(result==="yes"){alert("카운트 성공!");
+                    if(result=="yes"){alert("카운트 성공!");
+                    }else {
+                        alert("실패")
+                    }
+                }
+            });
+            const memberId = "${memberDTO.memberId}";
+            const oderName = "${cartDTO.itemName}";
+            const oderMobile = "${memberDTO.memberMobile}";
+            const oderAddress1 = "${memberDTO.memberAddress1}";
+            const oderAddress2 = "${memberDTO.memberAddress2}";
+            const oderAddress3 = "${memberDTO.memberAddress3}";
+            const oderAmount = "${cartDTO.cartQTY}";
+            const oderPayment = "${cartDTO.cartQTY*cartDTO.itemDiscount}";
+            const oderDelivery = 3500;
+
+            $.ajax({
+                type: "post",
+                url: "/order/orderSave",
+                async: false,
+                data: {"memberId":memberId,"oderName":oderName,
+                    "oderMobile":oderMobile,"oderAddress1":oderAddress1,"oderAddress2":oderAddress2,"oderAddress3":oderAddress3,
+                    "oderAmount":oderAmount,"oderPayment":oderPayment,"oderDelivery":oderDelivery},
+                dataType: "text",
+                success: function (result) {
+                    if(result=="yes"){
+                        alert("리스트 성공!");
+                        location.href="/member/myPage?cheersMemberId="+${memberDTO.cheersMemberId};
                     }else {
                         alert("실패")
                     }
                 }
             });
         }
-
     });
+
 </script>
 </body>
 </html>

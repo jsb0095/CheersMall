@@ -15,12 +15,17 @@
 <body>
 <jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 
-<div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto">
-    <form action="/member/login" method="post" class="container">
-        <input type="text" name="memberId" placeholder="아이디"><br>
-        <input type="password"  name="memberPassword" placeholder="비밀번호"><br>
-        <input type="submit" class=" d-grid mx-auto" value="로그인">
+<div class="container col-2" style="margin-top: 230px">
+    <form action="/member/login" method="post" name="formName">
+        <input class="form-control" type="text" name="memberId" placeholder="아이디"><br>
+        <input class="form-control" type="password"  name="memberPassword" placeholder="비밀번호"><br>
+        <button type="button" onclick="loginBtn()" class="d-grid mx-auto btn btn-warning" style="color: black" >로그인</button>
     </form>
 </div>
 </body>
+<script>
+    function loginBtn() {
+        formName.submit();
+    }
+</script>
 </html>

@@ -42,9 +42,11 @@ public class ItemController {
     public String paging(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
         List<ItemDTO> itemDTOList = itemService.pagingList(page);
         PageDTO pageDTO = itemService.paging(page);
+        System.out.println(itemDTOList);
+        System.out.println(pageDTO);
         model.addAttribute("itemDTOList", itemDTOList);
         model.addAttribute("paging", pageDTO);
-        return "member/cheersMain";
+        return "item/pagingList";
     }
 
     @PostMapping("/search")
@@ -132,12 +134,12 @@ public class ItemController {
     @PostMapping("/cartItemDrop")
     public @ResponseBody boolean dropItem(@ModelAttribute CartDTO cartDTO) {
         boolean dropResult = itemService.dropItem(cartDTO);
-        System.out.println(dropResult);
+
         return dropResult;
 
     }
 
-    @GetMapping("ranking")
+    @GetMapping("/ranking")
     public String rakingPage(Model model) {
         List<ItemDTO> rankingList = itemService.itemRankingList();
         model.addAttribute("rankinList", rankingList);
@@ -157,7 +159,7 @@ public class ItemController {
     CartDTO cartDTO= itemService.findByCartId(cartId);
     model.addAttribute("memberDTO",memberDTO);
     model.addAttribute("cartDTO",cartDTO);
-//    itemService.dropItem(cartDTO);
+
     return "member/kkoPay";
     }
     @GetMapping ("/simpleBuy")
@@ -165,10 +167,9 @@ public class ItemController {
         itemService.simpleBuy(itemId);
         return "redirect:/item/itemDetail?itemId="+itemId;
     }
-    @PostMapping("kkoPayCount")
+    @PostMapping("/kkoPayCount")
     public @ResponseBody String kkoPayCount(@ModelAttribute CartDTO cartDTO){
-        System.out.println("cartDTO = " + cartDTO);
-       return itemService.kkoPayCount(cartDTO);
-
+       String result = itemService.kkoPayCount(cartDTO);
+        return result;
     }
 }

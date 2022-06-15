@@ -38,7 +38,6 @@ public class memberController {
     @PostMapping("/save")
     public String save(@ModelAttribute MemberDTO memberDTO, Model model) {
         model.addAttribute("memberDTO", memberDTO);
-        System.out.println("memberDTO = " + memberDTO + ", model = " + model);
         memberService.save(memberDTO);
         return "member/loginForm";
     }

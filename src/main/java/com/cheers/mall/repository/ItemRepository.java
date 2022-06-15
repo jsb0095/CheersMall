@@ -25,10 +25,13 @@ public class ItemRepository {
     }
 
     public List<ItemDTO> pagingList(Map<String, Integer> pagingParam) {
+        System.out.println("ItemRepository.pagingList");
         return sql.selectList("Item.pagingList",pagingParam);
     }
 
     public int boardCount() {
+        System.out.println("ItemRepository.boardCount");
+
         return sql.selectOne("Item.count");
     }
 
@@ -83,7 +86,6 @@ public class ItemRepository {
     public int dropItem(CartDTO cartDTO) {
 
         int dropResult = sql.delete("Item.dropItem",cartDTO);
-        System.out.println(dropResult);
         return dropResult;
     }
 

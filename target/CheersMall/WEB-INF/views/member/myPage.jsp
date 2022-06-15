@@ -29,7 +29,7 @@
         <th>수량</th>
         <th>금액</th>
         <th>운송장번호</th>
-        <th>배송일</th>
+        <th>배송비</th>
 
     </tr>
     <c:forEach var="oder" items="${findId}">
@@ -43,9 +43,9 @@
             <td>${oder.oderAddress2}</td>
             <td>${oder.oderAddress3}</td>
             <td>${oder.oderAmount}</td>
-            <td>${oder.oderPayment}</td>
+            <td>${oder.oderPayment+oder.oderAmount+oder.oderDelivery}</td>
             <td>${oder.oderInvoice}</td>
-            <td>${oder.oderDelivarry}</td>
+            <td>${oder.oderDelivery}</td>
 
 
 

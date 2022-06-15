@@ -23,40 +23,42 @@
 <jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 <table class="table">
     <tr>
-        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상품이미지</th>
+        <th>상품이미지</th>
         <th>상품가격</th>
         <th>상품명</th>
         <th>&nbsp;&nbsp;&nbsp;&nbsp;상품수량</th>
         <th>삭제</th>
+        <th>&nbsp;&nbsp;결제</th>
 
 
 
     </tr>
     <c:forEach var="cart" items="${cartDTOList}">
     <tr>
-        <td><input id="itemCheckBoxId" type="checkbox" value="${cart.cartId}">&nbsp;&nbsp;&nbsp;&nbsp;<img style="margin: auto" width="100px" height="100px" src="${pageContext.request.contextPath}/upload/${cart.itemImageName1}"></td>
+        <td><img style="margin: auto" width="100px" height="100px" src="${pageContext.request.contextPath}/upload/${cart.itemImageName1}"></td>
         <td>${cart.itemDiscount*cart.cartQTY}원</td>
         <td>${cart.itemName}</td>
         <td><input class="col-1" type="text" value="${cart.cartQTY}" readonly> <input type="button" class="quantity_modify_plus" value="+" onclick="plus(${cart.cartId},${cart.cartQTY})">
             <input type="button" onclick="minus(${cart.cartId},${cart.cartQTY})" class="quantity_modify_minus" value="-"></td>
         <td><input type="button" value="삭제" onclick="cartDrop(${sessionScope.getId},${cart.cartId})"></td>
+        <td><button class="btn btn-warning" style="color: black" onclick="KKO(${cart.cartId})">카카오페이</button></td>
     </tr>
     </c:forEach>
     </table>
-   <button class="btn btn-warning" style="color: black" onclick="KKO()">카카오페이</button>
+
 </body>
 <script>
 
-   function KKO(){
-       const cartId = document.getElementById("itemCheckBoxId").value;
+   function KKO(cartId){
+
 
        location.href="/item/kkoPay?cheersMemberId=${sessionScope.getId}" + "&cartId="+cartId;
 
    }
 
     function plus(cartId,cartQTY){
-        if (cartQTY<0){
-            alert("상품의 수량이 0개입니다")
+        if (cartQTY<1){
+            alert("1개 이상의 수량을 선택해주세요")
         }else {
             $.ajax({
             type:"post",
@@ -73,8 +75,8 @@
 
     }
     function  minus(cartId,cartQTY){
-        if (cartQTY<=0){
-            alert("상품의 수량이 0개입니다")
+        if (cartQTY<=1){
+            alert("1개 미만의 상품은 선택할수 없습니다!")
         }else {
         $.ajax({
             type:"post",
