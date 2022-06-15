@@ -17,20 +17,20 @@
 <body>
 <jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 <table class="table">
-    <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto">
+    <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto" style="margin-top: 50px">
         <form action="/member/update" method="post">
 
-            회원번호<input type="text"  name="cheersMemberId"  value="${userData.cheersMemberId}"readonly>
-            아이디<input type="text" id="memberId" name="memberId" value="${userData.memberId}"readonly>
+            회원번호<input class="form-control" type="text"  name="cheersMemberId"  value="${userData.cheersMemberId}"readonly>
+            아이디<input class="form-control" type="text" id="memberId" name="memberId" value="${userData.memberId}"readonly>
                 <span id="updateIdCheck"></span>
-            비밀번호<input type="password" name="memberPassword">
-            이름<input type="text"  value="${userData.memberName}" name="memberName">
-                <input type="text" id="sample6_postcode" name="memberAddress1" placeholder="우편번호"><input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
-                <input type="text" id="sample6_address" name="memberAddress2" placeholder="주소">
-                <input type="text" id="sample6_detailAddress" name="memberAddress3" placeholder="상세주소">
-                <input type="text" id="sample6_extraAddress" placeholder="참고항목">
-                <div class="col-12 d-grid mx-auto"><input type="submit" value="회원정보수정" > <input type="button" onclick="cancel()" value="취소"></div>
-                <input type="button" class="col-12 d-grid mx-auto"  onclick="deleteId()" value="회원탈퇴">
+            비밀번호<input class="form-control" type="password" name="memberPassword">
+            이름<input class="form-control" type="text"  value="${userData.memberName}" name="memberName"><br>
+                <input class="form-control" type="text" id="sample6_postcode" name="memberAddress1" placeholder="우편번호"><br><input class="btn btn-warning" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                <input class="form-control" type="text" id="sample6_address" name="memberAddress2" placeholder="주소"><br>
+                <input class="form-control" type="text" id="sample6_detailAddress" name="memberAddress3" placeholder="상세주소"><br>
+                <input class="form-control" type="text" id="sample6_extraAddress" placeholder="참고항목"><br>
+                <div class="col-12 d-grid mx-auto"><input class="btn btn-warning gap-4" type="submit" value="회원정보수정" ><br> <input class="btn btn-warning gap-4" type="button" onclick="cancel()" value="취소"></div><br>
+                <input class="btn btn-warning" type="button" class="col-12 d-grid mx-auto gap-4"  onclick="deleteId()" value="회원탈퇴">
         </form>
     </div>
 

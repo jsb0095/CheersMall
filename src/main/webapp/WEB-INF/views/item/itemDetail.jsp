@@ -119,10 +119,12 @@
     function commentUpdate(commentId,commentContents,itemId){
        const divId =document.getElementById("comment-list");
         divId.innerHTML='<form action="/comment/update" method="post">'
-                    +'<input type="text" value="' + itemId + '" name="itemId" readonly>'
-                    +'<input type="text" value="' + commentId + '" name="commentId" readonly>'
-                    +'<input type="text" value="'+ commentContents +'" name="commentContents">'
-                    +'<button>댓글수정</button></form>';
+                    +'<input type="text" value="' + itemId + '" name="itemId" hidden>'
+                    +'<input type="text" value="' + commentId + '" name="commentId" hidden>'
+                    + '<div class="input-group mb-3">'
+                    +'<input class="form-control " type="text" value="'+ commentContents +'" name="commentContents">'
+                    +'<button class="btn btn-warning input-group">댓글수정</button></form>'
+                    +'</div>';
     }
 
 function commentDelete(commentId,commentItemId){

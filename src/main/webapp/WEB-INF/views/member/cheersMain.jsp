@@ -17,10 +17,15 @@
 </head>
 <body>
 <jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
-
-
+<div class="text-center" style="word-spacing: 5em">
+    <a href="/item/paging" class="text-black">베스트</a>
+    <a href="/item/paging" class="text-black">갓성비</a>
+    <a href="/item/paging" class="text-black">무료배송</a>
+    <a href="/item/paging" class="text-black">MD추천</a>
+    <a href="/item/paging" class="text-black">술안주</a>
+</div>
 <div style="margin:0 300px; width: 1200px; height: 850px">
-    <a href="/item/paging">더보기+</a>
+
 <c:forEach var="item" items="${itemDTOList}">
     <span class="a2" style="margin-left: 150px; text-align: center">
         <span class="card" style="margin-top: 50px ;float:left; width: 275px; height: 350px">

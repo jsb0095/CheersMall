@@ -34,7 +34,7 @@
             <a href="/member/admin" class="d-flex align-items-center mb-2 mb-lg-0  text-decoration-none"><input type="image" style="display: block  ;vertical-align:bottom" src="/resources/jpg/logo5.jpg" width="300" height=70">
                 </c:if>
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="word-spacing: 5em" >
                 <c:if test="${sessionScope.getId eq null}">
                 <li><a href="/member/saveForm" class="nav-link px-2 text-black">회원가입</a></li>
                 </c:if>
