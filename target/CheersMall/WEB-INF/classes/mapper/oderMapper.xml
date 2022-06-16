@@ -11,4 +11,7 @@
         insert into cheersOder_table(oderDate,memberId,oderName,oderMobile,oderAddress1,oderAddress2,oderAddress3,oderAmount,oderPayment,oderInvoice,oderDelivery)
         values(now(),#{memberId},#{oderName},#{oderMobile},#{oderAddress1},#{oderAddress2},#{oderAddress3},#{oderAmount},#{oderPayment},#{oderInvoice},#{oderDelivery})
     </insert>
+    <delete id="orderDrop" parameterType="Long">
+        delete from cheersOder_table where oderId=#{oderId}
+    </delete>
 </mapper>

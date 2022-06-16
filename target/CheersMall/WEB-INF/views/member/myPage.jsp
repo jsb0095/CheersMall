@@ -30,6 +30,7 @@
         <th>금액</th>
         <th>운송장번호</th>
         <th>배송비</th>
+        <th>삭제</th>
 
     </tr>
     <c:forEach var="oder" items="${findId}">
@@ -46,6 +47,7 @@
             <td>${oder.oderPayment+oder.oderAmount+oder.oderDelivery}원</td>
             <td>${oder.oderInvoice}</td>
             <td>${oder.oderDelivery}원</td>
+            <td><button type="button" class="form-control btn btn-warning"onclick="dropOrder(${oder.oderId})">삭제</button></td>
 
 
 
@@ -53,4 +55,9 @@
     </c:forEach>
 </table>
 </body>
+<script>
+    function dropOrder(oderId){
+        location.href="/order/drop?oderId="+oderId;
+    }
+</script>
 </html>
