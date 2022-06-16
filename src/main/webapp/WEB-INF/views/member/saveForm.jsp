@@ -21,14 +21,15 @@
 <jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto"style="margin-top: 70px" >
 <form action="/member/save" method="post" enctype="multipart/form-data">
-    <input type="text" class="form-control" name="memberId" id="duplicateMemberId" onblur="duplicate()" placeholder="아이디"><br>
+    <input type="text" class="form-control" name="memberId" id="duplicateMemberId" onblur="duplicate()" placeholder="아이디">
     <p id="duplicateResult"></p>
     <input type="password" id="password" class="form-control" onblur="pwCheck()" name="memberPassword" placeholder="비밀번호">
     <p id="passCheck"></p>
     <input type="text" class="form-control" name="memberName" placeholder="이름"><br>
     <input type="text" class="form-control" name="memberBirthDay" placeholder="생년월일"><br>
     <input type="email" class="form-control" name="memberEmail" placeholder="이메일"><br>
-    <input type="tel" class="form-control" name="memberMobile" placeholder="전화번호"><br>
+    <input type="tel" class="form-control" id="phoneCheck" onblur="MobileCheck()" name="memberMobile" placeholder="전화번호">
+    <p id="checkResult"></p>
     <input type="text" class="form-control" id="sample6_postcode" name="memberAddress1" placeholder="우편번호"><br>
     <input type="button" class="form-control btn btn-warning" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br><br>
     <input type="text" class="form-control" id="sample6_address" name="memberAddress2" placeholder="주소"><br>
@@ -41,6 +42,19 @@
 </div>
 </body>
 <script>
+    function MobileCheck() {
+        const phoneCheck = document.getElementById("phoneCheck").value;
+        const checkResult = document.getElementById("checkResult");
+        const exp = /^\d{3}-\d{4}-\d{4}$/;
+
+        if (phoneCheck.match(exp)) {
+            checkResult.style.color = "green"
+            checkResult.innerHTML = "멋져요"
+        } else {
+            checkResult.style.color = "red"
+            checkResult.innerHTML = "ex)010-1234-1234형태로 입력해주세요"
+        }
+    }
 
     function pwCheck() {
         let passwordCheck= document.getElementById("password").value;
