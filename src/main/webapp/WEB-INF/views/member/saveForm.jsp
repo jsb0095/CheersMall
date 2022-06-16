@@ -23,7 +23,8 @@
 <form action="/member/save" method="post" enctype="multipart/form-data">
     <input type="text" class="form-control" name="memberId" id="duplicateMemberId" onblur="duplicate()" placeholder="아이디"><br>
     <p id="duplicateResult"></p>
-    <input type="password" class="form-control" name="memberPassword" placeholder="비밀번호"><br>
+    <input type="password" id="password" class="form-control" onblur="pwCheck()" name="memberPassword" placeholder="비밀번호">
+    <p id="passCheck"></p>
     <input type="text" class="form-control" name="memberName" placeholder="이름"><br>
     <input type="text" class="form-control" name="memberBirthDay" placeholder="생년월일"><br>
     <input type="email" class="form-control" name="memberEmail" placeholder="이메일"><br>
@@ -40,6 +41,20 @@
 </div>
 </body>
 <script>
+
+    function pwCheck() {
+        let passwordCheck= document.getElementById("password").value;
+        let passCheck= document.getElementById("passCheck")
+        let exp=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_!#$])[A-Za-z\d-_!#$]{5,20}$/;
+
+        if (passwordCheck .match(exp)){
+            passCheck.innerHTML="사용가능한 비밀번호입니다"
+            passCheck.style.color="green"
+        }else{
+            passCheck.innerHTML="영문(대,소문자) 숫자 특수기호(-_!#$)<br>사용하여 입력해주세요";
+            passCheck.style.color="red"
+        }
+    }
     function duplicate(){
     const duplicateMemberId=document.getElementById("duplicateMemberId").value;
     const duplicateResult=document.getElementById("duplicateResult");
