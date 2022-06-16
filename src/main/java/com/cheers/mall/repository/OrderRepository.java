@@ -12,4 +12,8 @@ public class OrderRepository {
     public int orderSave(OderDTO oderDTO) {
       return   sql.insert("Oder.orderSave",oderDTO);
     }
+
+    public void orderDrop(Long oderId) {
+        sql.delete("Oder.orderDrop",oderId);
+    }
 }

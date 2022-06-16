@@ -21,4 +21,8 @@ public class OrderService {
             return "no";
         }
     }
+
+    public void orderDrop(Long oderId) {
+        orderRepository.orderDrop(oderId);
+    }
 }
