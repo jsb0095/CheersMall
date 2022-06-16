@@ -22,10 +22,10 @@
         <th>생년월일</th>
         <th>이메일</th>
         <th>전화번호</th>
+        <th>우편번호</th>
         <th>주소</th>
         <th>상세주소</th>
-        <th>참고항목</th>
-        <th>구매수량</th>
+
 
 
     </tr>
@@ -41,7 +41,7 @@
         <td>${user.memberAddress1}</td>
         <td>${user.memberAddress2}</td>
         <td>${user.memberAddress3}</td>
-        <td>${user.memberBuy}</td>
+
 
 
 

@@ -29,7 +29,7 @@
 
     <div style="margin:50px 0; width: 550px; height: 650px;flex: 1;">
      <table>
-         <tr style="width: 300px;font-size: 30px;padding-bottom: 20px">
+         <tr style="width: 300px;font-size: 30px;padding-bottom: 20px;">
              <td>상품명:</td><td>${itemDTO.itemName}</td>
          </tr>
 
@@ -53,8 +53,9 @@
              <td>배송비: </td><td>${itemDTO.itemDelivery}원</td>
          </tr>
          <tr>
-             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn btn-warning" style="color: black"  onclick="itemBuy(${itemDTO.itemId})">상품구매</button></td>
-             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn btn-warning"  style="color: black"   onclick="cartAdd()">장바구니추가</button></td>
+
+             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn btn-warning" style="color: black"  onclick="itemBuy(${itemDTO.itemId},${sessionScope.getId})">상품구매</button></td>
+             <td style="width: 300px;font-size: 30px;padding-bottom: 20px"><button class="btn btn-warning"  style="color: black"   onclick="cartAdd(${sessionScope.getId})">장바구니추가</button></td>
          </tr>
          <tr>
          <c:if test="${sessionScope.getMemberId eq 'admin'}">
@@ -71,7 +72,10 @@
         <img class="container" style="margin-left: 350px;width: 1000px"  src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName3}">
     </c:if>
         <c:if test="${sessionScope.getId!=null}">
-    </div><br><br><br><br>
+    </div>
+    <div>
+
+    </div>
     <div class="container">
         <div id="comment-writeSave" class="input-group mb-3">
             <input type="text" id="commentWriter" class="form-control" value="${sessionScope.getMemberId}" hidden>
@@ -88,8 +92,10 @@
                 <th>작성자</th>
                 <th>내용</th>
                 <th>작성시간</th>
+                <c:if test="${sessionScope.getMemberId ne null}">
                 <th>댓글수정</th>
                 <th>댓글삭제</th>
+                </c:if>
 
             </tr>
             <c:forEach items="${commentList}" var="comment">
@@ -98,8 +104,16 @@
                     <td id="contents${comment.commentId}">${comment.commentContents}</td>
                     <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
                                         value="${comment.commentDate}"></fmt:formatDate></td>
+                    <c:choose>
+                    <c:when test="${sessionScope.getMemberId eq comment.commentWriter}">
                     <td><button class="btn btn-warning" onclick="commentUpdate('${comment.commentId}','${comment.commentContents}','${comment.itemId}')">댓글수정</button></td>
                     <td><button class="btn btn-warning" onclick="commentDelete('${comment.commentId}','${comment.itemId}')">댓글삭제</button></td>
+                    </c:when>
+                    <c:otherwise>
+                        <td></td>
+                        <td></td>
+                    </c:otherwise>
+                    </c:choose>
                 </tr>
             </c:forEach>
         </table>
@@ -109,11 +123,17 @@
 
 </body>
 <script>
-    function itemBuy(itemId){
-      const buyResult=  confirm("상품을 구매하시겠습니까 ?")
-        if(buyResult){
-            location.href="/item/simpleBuy?itemId="+itemId;
+    function itemBuy(itemId,cheerMemberId) {
+        if (cheerMemberId!=null) {
+            confirm("상품을 구매하시겠습니까 ?")
+            location.href = "/item/simpleBuy?itemId=" + itemId;
         }
+        else
+           {
+               alert("로그인후 이용해주세요")
+               location.href="/member/loginForm"
+            }
+
     }
 
     function commentUpdate(commentId,commentContents,itemId){
@@ -141,13 +161,19 @@ function commentDelete(commentId,commentItemId){
     function itemDelete(){
         location.href="/item/itemDelete?itemId=${itemDTO.itemId}"
     }
-    function cartAdd(){
-        alert("징비구니에 상품이 추가되었습니다.");
+    function cartAdd(cheersMemberId){
+        if(cheersMemberId==null){
+            alert("로그인후 이용해주세요")
+            location.href="/member/loginForm"
+        }else{alert("징비구니에 상품이 추가되었습니다.");
+        }
+
         $.ajax({
         type:"post",
             url:"/item/cartDuplicate",
             data:{"itemId":'${itemDTO.itemId}',"cheersMemberId":'${sessionScope.getId}'},
                  dataType:"text",
+
             success: function (result){
                 if(result=="ok"){
                  location.href="/item/cartCount?itemId=${itemDTO.itemId}&itemDiscount=${itemDTO.itemDiscount}&itemName=${itemDTO.itemName}&itemImageName1=${itemDTO.itemImageName1}&cheersMemberId=${sessionScope.getId}"
@@ -183,11 +209,15 @@ function commentDelete(commentId,commentItemId){
                 output += "<td>" + commentDTOList[i].commentWriter + "</td>";
                 output += "<td>" + commentDTOList[i].commentContents + "</td>";
                 output += "<td>" + moment(commentDTOList[i].commentDate).format("YYYY-MM-DD HH:mm:ss") + "</td>";
-                output += "<td>" + "<button class='btn btn-warning' onclick='commentUpdate(" + commentDTOList[i].commentId + "," + commentDTOList[i].commentContents + "," + commentDTOList[i].itemId +")'>" + "댓글수정" + "</button></td>";
-                output += "<td>" + "<button class='btn btn-warning' onclick='commentDelete(" + commentDTOList[i].commentId + "," + commentDTOList[i].itemId +")'>" + "삭제" + "</button></td>";
+                if('${sessionScope.getMemberId}' === commentDTOList[i].commentWriter){
+                    output += "<td>" + "<button class='btn btn-warning' onclick='commentUpdate(" + commentDTOList[i].commentId + "," + commentDTOList[i].commentContents + "," + commentDTOList[i].itemId +")'>" + "댓글수정" + "</button></td>";
+                    output += "<td>" + "<button class='btn btn-warning' onclick='commentDelete(" + commentDTOList[i].commentId + "," + commentDTOList[i].itemId +")'>" + "삭제" + "</button></td>";
+                }else {
+                    output += "<td></td>";
+                    output += "<td></td>";
+                }
 
-                <%--output += "<td>" + '<button class="btn btn-warning" onclick="commentUpdate(' + ${comment.commentId} + ',' + ${comment.commentContents}+ ',' +${comment.itemId} + ')">' + "댓글수정" + "</button>" +"</td>"';--%>
-                <%--output += "<td>" + '<button class="btn btn-warning" onclick="commentDelete(' + ${comment.commentId} + ',' + ${comment.itemId}+')">댓글삭제</button>+"</td>"';--%>
+
                 output += "</tr>";//moment 순간
             }
             output += "</table>";
