@@ -39,9 +39,9 @@ public class ItemController {
 
 
     @GetMapping("/paging")
-    public String paging(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
-        List<ItemDTO> itemDTOList = itemService.pagingList(page);
-        PageDTO pageDTO = itemService.paging(page);
+    public String bestPaging(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
+        List<ItemDTO> itemDTOList = itemService.bestPagingList(page);
+        PageDTO pageDTO = itemService.bestPaging(page);
         System.out.println(itemDTOList);
         System.out.println(pageDTO);
         model.addAttribute("itemDTOList", itemDTOList);

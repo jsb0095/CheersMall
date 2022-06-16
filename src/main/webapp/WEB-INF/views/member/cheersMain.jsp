@@ -18,9 +18,9 @@
 <body>
 <jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
 <div class="text-center" style="word-spacing: 5em">
-    <a href="/item/paging" class="text-black">베스트</a>
-    <a href="/item/paging" class="text-black">갓성비</a>
-    <a href="/item/paging" class="text-black">무료배송</a>
+    <a href="/item/bestPaging" class="text-black">베스트</a>
+    <a href="/item/paging" class="text-black">육류</a>
+    <a href="/item/paging" class="text-black">해산물</a>
     <a href="/item/paging" class="text-black">MD추천</a>
     <a href="/item/paging" class="text-black">술안주</a>
 </div>

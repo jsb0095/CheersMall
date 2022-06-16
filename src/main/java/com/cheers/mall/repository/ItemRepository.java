@@ -24,15 +24,12 @@ public class ItemRepository {
       return   sql.selectList("Item.itemList");
     }
 
-    public List<ItemDTO> pagingList(Map<String, Integer> pagingParam) {
-        System.out.println("ItemRepository.pagingList");
-        return sql.selectList("Item.pagingList",pagingParam);
+    public List<ItemDTO> bestPagingList(Map<String, Integer> pagingParam) {
+        return sql.selectList("Item.bestPagingList",pagingParam);
     }
 
-    public int boardCount() {
-        System.out.println("ItemRepository.boardCount");
-
-        return sql.selectOne("Item.count");
+    public int bestItemCount() {
+        return sql.selectOne("Item.bestCount");
     }
 
     public List<ItemDTO> search(String q) {

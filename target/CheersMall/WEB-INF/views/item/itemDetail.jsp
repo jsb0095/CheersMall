@@ -20,7 +20,7 @@
 <div style="display: flex; margin: auto" >
 <div style="margin-left:220px; width: 550px; height: 650px; flex:1">
     <span class="a2" style="margin-left: 150px; text-align: center">
-        <span class="card" style="margin-top: 50px ;float:left; width: 275px; height: 350px">
+        <span class="card" style="margin-top: 50px ;float:left; width: 300px; height: 300px">
             <img style="margin-left: auto" width="300px" height="300px" src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName1}">
         </span>
     </span>
@@ -123,7 +123,7 @@
                     +'<input type="text" value="' + commentId + '" name="commentId" hidden>'
                     + '<div class="input-group mb-3">'
                     +'<input class="form-control " type="text" value="'+ commentContents +'" name="commentContents">'
-                    +'<button class="btn btn-warning input-group">댓글수정</button></form>'
+                    +'<button class="btn btn-warning ">댓글수정</button></form>'
                     +'</div>';
     }
 

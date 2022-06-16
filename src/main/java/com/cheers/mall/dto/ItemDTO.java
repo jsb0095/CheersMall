@@ -10,6 +10,7 @@ public class ItemDTO {
    private int itemPrice;
    private int itemDiscount;
    private int itemStock;
+   private int itemCategory;
    private MultipartFile itemImageFile1;
    private String itemImageName1;
    private MultipartFile itemImageFile2;

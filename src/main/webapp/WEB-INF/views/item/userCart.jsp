@@ -38,7 +38,7 @@
         <td><img style="margin: auto" width="100px" height="100px" src="${pageContext.request.contextPath}/upload/${cart.itemImageName1}"></td>
         <td>${cart.itemDiscount*cart.cartQTY}원</td>
         <td>${cart.itemName}</td>
-        <td><input class="col-1 text-center " style="height: 35px;border-radius: 10px" type="text" value="${cart.cartQTY}" readonly> <input type="button" class="quantity_modify_plus btn btn-warning" value="+" onclick="plus(${cart.cartId},${cart.cartQTY})">
+        <td><input class="col-1 text-center " style="height: 35px;border-radius: 10px; vertical-align: middle" type="text" value="${cart.cartQTY}" readonly> <input type="button" class="quantity_modify_plus btn btn-warning" value="+" onclick="plus(${cart.cartId},${cart.cartQTY})">
             <input type="button" onclick="minus(${cart.cartId},${cart.cartQTY})" class="quantity_modify_minus btn btn-warning" value="-"></td>
         <td><input type="button" class="btn btn-warning" value="삭제" onclick="cartDrop(${sessionScope.getId},${cart.cartId})"></td>
         <td><button class="btn btn-warning" style="color: black" onclick="KKO(${cart.cartId})">카카오페이</button></td>

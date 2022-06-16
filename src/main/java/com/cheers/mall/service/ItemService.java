@@ -58,18 +58,18 @@ public class ItemService {
     }
     private static final int PAGE_LIMIT=4;
     private static final int BLOCK_LIMIT=4;
-    public List<ItemDTO> pagingList(int page) {
+    public List<ItemDTO> bestPagingList(int page) {
         int pagingStart=(page-1)* PAGE_LIMIT;
         Map<String, Integer> pagingParam= new HashMap<>();
         pagingParam.put("start",pagingStart);
         pagingParam.put("limit",PAGE_LIMIT);
-        List<ItemDTO> pagingList = itemRepository.pagingList(pagingParam);
+        List<ItemDTO> pagingList = itemRepository.bestPagingList(pagingParam);
         return pagingList;
 
     }
 
-    public PageDTO paging(int page) {
-        int boardCount = itemRepository.boardCount();
+    public PageDTO bestPaging(int page) {
+        int boardCount = itemRepository.bestItemCount();
         int maxPage=(int) (Math.ceil((double)boardCount/PAGE_LIMIT));
         int startPage = (((int) (Math.ceil((double)page/BLOCK_LIMIT)))-1)*BLOCK_LIMIT+1;
         int endPage= startPage + BLOCK_LIMIT-1;

@@ -18,6 +18,14 @@
     <form method="post" action="/item/itemUpdate" enctype="multipart/form-data">
         <input type="text" class="gap-2 form-control" name="itemId" value="${updateItem.itemId}"hidden>
         <input type="text" class="gap-2 form-control" name="itemName" value="${updateItem.itemName}" placeholder="상품명">
+        <select class="form-control" name="itemCategory">
+            <option value="none">카테고리</option>
+            <option value="1">BEST</option>
+            <option value="2">육류</option>
+            <option value="3">야식류</option>
+            <option value="4">해산물</option>
+            <option value="5">밀키트</option>
+        </select>
         <input type="text" class="gap-2 form-control" name="itemPrice" value="${updateItem.itemPrice}" placeholder="상품가격">
         <input type="text" class="gap-2 form-control" name="itemDiscount" value="${updateItem.itemDiscount}" placeholder="상품할인가">
         <input type="text" class="gap-2 form-control" name="itemStock" value="${updateItem.itemStock}"  placeholder="수량">
