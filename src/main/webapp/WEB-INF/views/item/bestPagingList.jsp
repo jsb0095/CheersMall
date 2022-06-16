@@ -17,7 +17,7 @@
 <div style="margin:0 300px; width: 1200px; height: 850px">
     <c:forEach var="item" items="${itemDTOList}">
     <span class="a2" style="margin-left: 150px; text-align: center">
-        <span class="card" style="margin-top: 50px ;float:left; width: 275px; height: 350px">
+        <span class="card" style="margin-top: 50px ;float:left;margin-left: 10px; width: 275px; height: 350px">
             <img width="275px" height="245px" onclick="detail(${item.itemId})" src="${pageContext.request.contextPath}/upload/${item.itemImageName1}">
             <span class="card-body">
                 <p class="card-text">${item.itemName}<br>
@@ -38,7 +38,7 @@
             </c:when>
             <c:otherwise>
                 <li class="page-item link-dark">
-                    <a class="page-link link-dark" href="/item/paging?page=${paging.page-1}">[이전]</a>
+                    <a class="page-link link-dark" href="/item/bestPaging?page=${paging.page-1}">[이전]</a>
                 </li>
             </c:otherwise>
         </c:choose>
@@ -51,7 +51,7 @@
                 </c:when>
                 <c:otherwise>
                     <li class="page-item link-dark">
-                        <a class="page-link link-dark" href="/item/paging?page=${i}">${i}</a>
+                        <a class="page-link link-dark" href="/item/bestPaging?page=${i}">${i}</a>
                     </li>
                 </c:otherwise>
             </c:choose>
@@ -64,7 +64,7 @@
             </c:when>
             <c:otherwise>
                 <li class="page-item link-dark">
-                    <a class="page-link link-dark" href="/item/paging?page=${paging.page+1}">[다음]</a>
+                    <a class="page-link link-dark" href="/item/bestPaging?page=${paging.page+1}">[다음]</a>
                 </li>
             </c:otherwise>
         </c:choose>

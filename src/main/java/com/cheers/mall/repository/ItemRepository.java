@@ -24,13 +24,7 @@ public class ItemRepository {
       return   sql.selectList("Item.itemList");
     }
 
-    public List<ItemDTO> bestPagingList(Map<String, Integer> pagingParam) {
-        return sql.selectList("Item.bestPagingList",pagingParam);
-    }
 
-    public int bestItemCount() {
-        return sql.selectOne("Item.bestCount");
-    }
 
     public List<ItemDTO> search(String q) {
      return    sql.selectList("Item.search",q);
@@ -105,5 +99,44 @@ public class ItemRepository {
 
     public int kkoPayCount(CartDTO cartDTO) {
       return   sql.update("Item.kkoPayCount",cartDTO);
+    }
+
+    public List<ItemDTO> bestPagingList(Map<String, Integer> pagingParam) {
+        return sql.selectList("Item.bestPagingList",pagingParam);
+    }
+
+    public int bestItemCount() {
+        return sql.selectOne("Item.bestCount");
+    }
+    public List<ItemDTO> meatPagingList(Map<String, Integer> pagingParam) {
+        return sql.selectList("Item.meatPagingList",pagingParam);
+    }
+
+    public int meatItemCount() {
+        return sql.selectOne("Item.meatItemCount");
+    }
+
+    public List<ItemDTO> seaFoodPagingList(Map<String, Integer> pagingParam) {
+        return sql.selectList("Item.seaFoodPagingList",pagingParam);
+    }
+
+    public int seaFoodItemCount() {
+        return sql.selectOne("Item.seaFoodItemCount");
+    }
+
+    public List<ItemDTO> nightMealPagingList(Map<String, Integer> pagingParam) {
+        return sql.selectList("Item.nightMealPagingList",pagingParam);
+    }
+
+    public int nightMealItemCount() {
+        return sql.selectOne("Item.nightMealItemCount");
+    }
+
+    public List<ItemDTO> mealKitPagingList(Map<String, Integer> pagingParam) {
+        return sql.selectList("Item.mealKitPagingList",pagingParam);
+    }
+
+    public int mealKitItemCount() {
+        return sql.selectOne("Item.mealKitItemCount");
     }
 }

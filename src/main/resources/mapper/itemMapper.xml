@@ -6,17 +6,11 @@
 <mapper namespace="Item">
 <insert id="itemSave" parameterType="IDTO">
     insert into cheersItem_table (itemCategory,itemName,itemPrice,itemDiscount,itemStock,itemImageName1,itemImageName2,itemImageName3,itemExp,itemDelivery)
-    values (#{itemCa  tegory},#{itemName},#{itemPrice},#{itemDiscount},#{itemStock},#{itemImageName1},#{itemImageName2},#{itemImageName3},#{itemExp},#{itemDelivery})
+    values (#{itemCategory},#{itemName},#{itemPrice},#{itemDiscount},#{itemStock},#{itemImageName1},#{itemImageName2},#{itemImageName3},#{itemExp},#{itemDelivery})
 </insert>
 <select id="itemList" resultType="IDTO">
     select * from cheersItem_table
 </select>
-  <select id="bestPagingList" parameterType="java.util.HashMap" resultType="IDTO">
-        select *from cheersItem_table where itemCategory=1 order by itemId desc limit #{start},#{limit}
-  </select>
-    <select id="bestCount" resultType="int">
-        select count(itemId) from  cheersItem_table where itemCategory=1
-    </select>
     <select id="search" parameterType="String" resultType="IDTO">
         select * from cheersItem_table where itemName like concat('%',#{q},'%') order by itemId desc
     </select>
@@ -68,6 +62,40 @@
     <update id="kkoPayCount" parameterType="CDTO">
         update cheersItem_table set itemSell=itemSell+#{cartQTY}, itemStock=itemStock-#{cartQTY} where itemId=#{itemId}
     </update>
+    <select id="bestPagingList" parameterType="java.util.HashMap" resultType="IDTO">
+        select *from cheersItem_table where itemCategory=1 order by itemId desc limit #{start},#{limit}
+    </select>
+    <select id="bestCount" resultType="int">
+        select count(itemId) from  cheersItem_table where itemCategory=1
+    </select>
+
+    <select id="meatPagingList" parameterType="java.util.HashMap" resultType="IDTO">
+        select *from cheersItem_table where itemCategory=2 order by itemId desc limit #{start},#{limit}
+    </select>
+    <select id="meatItemCount" resultType="int">
+        select count(itemId) from  cheersItem_table where itemCategory=2
+    </select>
+
+    <select id="seaFoodPagingList" parameterType="java.util.HashMap" resultType="IDTO">
+        select *from cheersItem_table where itemCategory=4 order by itemId desc limit #{start},#{limit}
+    </select>
+    <select id="seaFoodItemCount" resultType="int">
+        select count(itemId) from  cheersItem_table where itemCategory=4
+    </select>
+
+    <select id="nightMealPagingList" parameterType="java.util.HashMap" resultType="IDTO">
+        select *from cheersItem_table where itemCategory=3 order by itemId desc limit #{start},#{limit}
+    </select>
+    <select id="nightMealItemCount" resultType="int">
+        select count(itemId) from  cheersItem_table where itemCategory=3
+    </select>
+
+    <select id="mealKitPagingList" parameterType="java.util.HashMap" resultType="IDTO">
+        select *from cheersItem_table where itemCategory=5 order by itemId desc limit #{start},#{limit}
+    </select>
+    <select id="mealKitItemCount" resultType="int">
+        select count(itemId) from  cheersItem_table where itemCategory=5
+    </select>
 </mapper>
 
 

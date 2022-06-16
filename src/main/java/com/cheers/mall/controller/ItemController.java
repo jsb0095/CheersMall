@@ -9,11 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 @Controller
@@ -38,15 +34,45 @@ public class ItemController {
     }
 
 
-    @GetMapping("/paging")
+    @GetMapping("/bestPaging")
     public String bestPaging(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
         List<ItemDTO> itemDTOList = itemService.bestPagingList(page);
         PageDTO pageDTO = itemService.bestPaging(page);
-        System.out.println(itemDTOList);
-        System.out.println(pageDTO);
         model.addAttribute("itemDTOList", itemDTOList);
         model.addAttribute("paging", pageDTO);
-        return "item/pagingList";
+        return "item/bestPagingList";
+    }
+    @GetMapping("/meatPaging")
+    public String meatPaging(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
+        List<ItemDTO> itemDTOList = itemService.meatPagingList(page);
+        PageDTO pageDTO = itemService.meatPaging(page);
+        model.addAttribute("itemDTOList", itemDTOList);
+        model.addAttribute("paging", pageDTO);
+        return "item/meatPagingList";
+    }
+    @GetMapping("/seaFoodPaging")
+    public String seaFoodPaging(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
+        List<ItemDTO> itemDTOList = itemService.seaFoodPagingList(page);
+        PageDTO pageDTO = itemService.seaFoodPaging(page);
+        model.addAttribute("itemDTOList", itemDTOList);
+        model.addAttribute("paging", pageDTO);
+        return "item/seaFoodPagingList";
+    }
+    @GetMapping("/nightMealPaging")
+    public String nightMealPaging(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
+        List<ItemDTO> itemDTOList = itemService.nightMealPagingList(page);
+        PageDTO pageDTO = itemService.nightMealPaging(page);
+        model.addAttribute("itemDTOList", itemDTOList);
+        model.addAttribute("paging", pageDTO);
+        return "item/nightMealPagingList";
+    }
+    @GetMapping("/mealKitPaging")
+    public String mealKitPaging(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
+        List<ItemDTO> itemDTOList = itemService.mealKitPagingList(page);
+        PageDTO pageDTO = itemService.mealKitPaging(page);
+        model.addAttribute("itemDTOList", itemDTOList);
+        model.addAttribute("paging", pageDTO);
+        return "item/mealKitPagingList";
     }
 
     @PostMapping("/search")

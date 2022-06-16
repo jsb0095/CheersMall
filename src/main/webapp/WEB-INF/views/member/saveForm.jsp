@@ -10,6 +10,7 @@
 
 <html>
 <head>
+
     <title>회원가이페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -18,23 +19,23 @@
 </head>
 <body>
 <jsp:include page="../../../resources/layout/header.jsp" flush="false"></jsp:include>
-<div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto" >
+<div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto"style="margin-top: 70px" >
 <form action="/member/save" method="post" enctype="multipart/form-data">
-    <input type="text" class="gap-2" name="memberId" id="duplicateMemberId" onblur="duplicate()" placeholder="아이디"><br>
+    <input type="text" class="form-control" name="memberId" id="duplicateMemberId" onblur="duplicate()" placeholder="아이디"><br>
     <p id="duplicateResult"></p>
-    <input type="password" class="gap-2" name="memberPassword" placeholder="비밀번호"><br>
-    <input type="text" class="gap-2" name="memberName" placeholder="이름"><br>
-    <input type="text" class="gap-2" name="memberBirthDay" placeholder="생년월일"><br>
-    <input type="email" class="gap-2" name="memberEmail" placeholder="이메일"><br>
-    <input type="tel" class="gap-2" name="memberMobile" placeholder="전화번호"><br>
-    <input type="text" id="sample6_postcode" name="memberAddress1" placeholder="우편번호">
-    <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-    <input type="text" id="sample6_address" name="memberAddress2" placeholder="주소"><br>
-    <input type="text" id="sample6_detailAddress" name="memberAddress3" placeholder="상세주소">
-    <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+    <input type="password" class="form-control" name="memberPassword" placeholder="비밀번호"><br>
+    <input type="text" class="form-control" name="memberName" placeholder="이름"><br>
+    <input type="text" class="form-control" name="memberBirthDay" placeholder="생년월일"><br>
+    <input type="email" class="form-control" name="memberEmail" placeholder="이메일"><br>
+    <input type="tel" class="form-control" name="memberMobile" placeholder="전화번호"><br>
+    <input type="text" class="form-control" id="sample6_postcode" name="memberAddress1" placeholder="우편번호"><br>
+    <input type="button" class="form-control btn btn-warning" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br><br>
+    <input type="text" class="form-control" id="sample6_address" name="memberAddress2" placeholder="주소"><br>
+    <input type="text"class="form-control" id="sample6_detailAddress" name="memberAddress3" placeholder="상세주소"><br>
+    <input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목"><br>
 
 
-    <input type="submit" class=" d-grid mx-auto" value="회원가입">
+    <input type="submit"  class="form-control btn btn-warning" value="회원가입">
 </form>
 </div>
 </body>

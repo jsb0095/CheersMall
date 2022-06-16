@@ -120,7 +120,11 @@ public class memberController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam("cheersMemberId") Long cheersMemberId) {
+    public String delete(@RequestParam("cheersMemberId") Long cheersMemberId,Model model,HttpSession session) {
+        List<ItemDTO> itemDTOList = itemService.itemList();
+        model.addAttribute("itemDTOList", itemDTOList);
+        session.invalidate();
+
         memberService.delete(cheersMemberId);
         return "member/cheersMain";
     }

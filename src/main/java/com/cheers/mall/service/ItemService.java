@@ -53,37 +53,7 @@ public class ItemService {
         itemRepository.itemSave(itemDTO);
     }
 
-    public List<ItemDTO> itemList() {
-       return itemRepository.itemList();
-    }
-    private static final int PAGE_LIMIT=4;
-    private static final int BLOCK_LIMIT=4;
-    public List<ItemDTO> bestPagingList(int page) {
-        int pagingStart=(page-1)* PAGE_LIMIT;
-        Map<String, Integer> pagingParam= new HashMap<>();
-        pagingParam.put("start",pagingStart);
-        pagingParam.put("limit",PAGE_LIMIT);
-        List<ItemDTO> pagingList = itemRepository.bestPagingList(pagingParam);
-        return pagingList;
 
-    }
-
-    public PageDTO bestPaging(int page) {
-        int boardCount = itemRepository.bestItemCount();
-        int maxPage=(int) (Math.ceil((double)boardCount/PAGE_LIMIT));
-        int startPage = (((int) (Math.ceil((double)page/BLOCK_LIMIT)))-1)*BLOCK_LIMIT+1;
-        int endPage= startPage + BLOCK_LIMIT-1;
-        if(endPage>maxPage){
-            endPage=maxPage;
-        }
-        PageDTO paging = new PageDTO();
-        paging.setPage(page);
-        paging.setStartPage(startPage);
-        paging.setEndPage(endPage);
-        paging.setMaxPage(maxPage);
-        return paging;
-
-    }
 
     public List<ItemDTO> search(String q) {
        return itemRepository.search(q);
@@ -203,5 +173,135 @@ public class ItemService {
         }else {
             return "no";
         }
+    }
+    public List<ItemDTO> itemList() {
+        return itemRepository.itemList();
+    }
+    private static final int PAGE_LIMIT=4;
+    private static final int BLOCK_LIMIT=4;
+    public List<ItemDTO> bestPagingList(int page) {
+        int bestPagingStart=(page-1)* PAGE_LIMIT;
+        Map<String, Integer> pagingParam= new HashMap<>();
+        pagingParam.put("start",bestPagingStart);
+        pagingParam.put("limit",PAGE_LIMIT);
+        List<ItemDTO> pagingList = itemRepository.bestPagingList(pagingParam);
+        return pagingList;
+
+    }
+
+    public PageDTO bestPaging(int page) {
+        int bestItemCount = itemRepository.bestItemCount();
+        int maxPage=(int) (Math.ceil((double)bestItemCount/PAGE_LIMIT));
+        int startPage = (((int) (Math.ceil((double)page/BLOCK_LIMIT)))-1)*BLOCK_LIMIT+1;
+        int endPage= startPage + BLOCK_LIMIT-1;
+        if(endPage>maxPage){
+            endPage=maxPage;
+        }
+        PageDTO paging = new PageDTO();
+        paging.setPage(page);
+        paging.setStartPage(startPage);
+        paging.setEndPage(endPage);
+        paging.setMaxPage(maxPage);
+        return paging;
+
+    }
+    public List<ItemDTO> meatPagingList(int page) {
+        int meatPagingStart=(page-1)* PAGE_LIMIT;
+        Map<String, Integer> pagingParam= new HashMap<>();
+        pagingParam.put("start",meatPagingStart);
+        pagingParam.put("limit",PAGE_LIMIT);
+        List<ItemDTO> pagingList = itemRepository.meatPagingList(pagingParam);
+        return pagingList;
+    }
+
+    public PageDTO meatPaging(int page) {
+        int meatItemCount = itemRepository.meatItemCount();
+        int maxPage=(int) (Math.ceil((double)meatItemCount/PAGE_LIMIT));
+        int startPage = (((int) (Math.ceil((double)page/BLOCK_LIMIT)))-1)*BLOCK_LIMIT+1;
+        int endPage= startPage + BLOCK_LIMIT-1;
+        if(endPage>maxPage){
+            endPage=maxPage;
+        }
+        PageDTO paging = new PageDTO();
+        paging.setPage(page);
+        paging.setStartPage(startPage);
+        paging.setEndPage(endPage);
+        paging.setMaxPage(maxPage);
+        return paging;
+    }
+
+    public List<ItemDTO> seaFoodPagingList(int page) {
+        int seaFoodPagingStart=(page-1)* PAGE_LIMIT;
+        Map<String, Integer> pagingParam= new HashMap<>();
+        pagingParam.put("start",seaFoodPagingStart);
+        pagingParam.put("limit",PAGE_LIMIT);
+        List<ItemDTO> pagingList = itemRepository.seaFoodPagingList(pagingParam);
+        return pagingList;
+    }
+
+    public PageDTO seaFoodPaging(int page) {
+        int seaFoodItemCount = itemRepository.seaFoodItemCount();
+        int maxPage=(int) (Math.ceil((double)seaFoodItemCount/PAGE_LIMIT));
+        int startPage = (((int) (Math.ceil((double)page/BLOCK_LIMIT)))-1)*BLOCK_LIMIT+1;
+        int endPage= startPage + BLOCK_LIMIT-1;
+        if(endPage>maxPage){
+            endPage=maxPage;
+        }
+        PageDTO paging = new PageDTO();
+        paging.setPage(page);
+        paging.setStartPage(startPage);
+        paging.setEndPage(endPage);
+        paging.setMaxPage(maxPage);
+        return paging;
+    }
+
+    public List<ItemDTO> nightMealPagingList(int page) {
+        int nightMealPagingStart=(page-1)* PAGE_LIMIT;
+        Map<String, Integer> pagingParam= new HashMap<>();
+        pagingParam.put("start",nightMealPagingStart);
+        pagingParam.put("limit",PAGE_LIMIT);
+        List<ItemDTO> pagingList = itemRepository.nightMealPagingList(pagingParam);
+        return pagingList;
+    }
+
+    public PageDTO nightMealPaging(int page) {
+        int nightItemCount = itemRepository.nightMealItemCount();
+        int maxPage=(int) (Math.ceil((double)nightItemCount/PAGE_LIMIT));
+        int startPage = (((int) (Math.ceil((double)page/BLOCK_LIMIT)))-1)*BLOCK_LIMIT+1;
+        int endPage= startPage + BLOCK_LIMIT-1;
+        if(endPage>maxPage){
+            endPage=maxPage;
+        }
+        PageDTO paging = new PageDTO();
+        paging.setPage(page);
+        paging.setStartPage(startPage);
+        paging.setEndPage(endPage);
+        paging.setMaxPage(maxPage);
+        return paging;
+    }
+
+    public List<ItemDTO> mealKitPagingList(int page) {
+        int mealKitPagingStart=(page-1)* PAGE_LIMIT;
+        Map<String, Integer> pagingParam= new HashMap<>();
+        pagingParam.put("start",mealKitPagingStart);
+        pagingParam.put("limit",PAGE_LIMIT);
+        List<ItemDTO> pagingList = itemRepository.mealKitPagingList(pagingParam);
+        return pagingList;
+    }
+
+    public PageDTO mealKitPaging(int page) {
+        int mealKitItemCount = itemRepository.mealKitItemCount();
+        int maxPage=(int) (Math.ceil((double)mealKitItemCount/PAGE_LIMIT));
+        int startPage = (((int) (Math.ceil((double)page/BLOCK_LIMIT)))-1)*BLOCK_LIMIT+1;
+        int endPage= startPage + BLOCK_LIMIT-1;
+        if(endPage>maxPage){
+            endPage=maxPage;
+        }
+        PageDTO paging = new PageDTO();
+        paging.setPage(page);
+        paging.setStartPage(startPage);
+        paging.setEndPage(endPage);
+        paging.setMaxPage(maxPage);
+        return paging;
     }
 }

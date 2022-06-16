@@ -21,7 +21,7 @@
 <div style="margin-left:220px; width: 550px; height: 650px; flex:1">
     <span class="a2" style="margin-left: 150px; text-align: center">
         <span class="card" style="margin-top: 50px ;float:left; width: 300px; height: 300px">
-            <img style="margin-left: auto" width="300px" height="300px" src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName1}">
+            <img style="margin-left: auto" width=350px; height=350px src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName1}">
         </span>
     </span>
 </div>
@@ -66,9 +66,9 @@
     </div>
 </div>
 <div>
-    <img class="container" style="margin-left: 350px; width: 1000px;" src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName2}">
-    <c:if test="${itemDTO.itemImageName3 ne null}">
-        <img class="container" style="margin-left: 200px"  src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName3}">
+    <img class="container" style="margin-left: 350px; width: 1000px;" src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName2}"><br>
+    <c:if test="${itemDTO.itemImageName3 ne null}"><br>
+        <img class="container" style="margin-left: 350px;width: 1000px"  src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName3}">
     </c:if>
         <c:if test="${sessionScope.getId!=null}">
     </div><br><br><br><br>

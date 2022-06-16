@@ -16,6 +16,15 @@
 <div class="position-absolute top-50 start-50 translate-middle d-grid mx-auto">
 <form method="post" action="/item/saveResult" enctype="multipart/form-data">
         <input type="text" class="gap-2 form-control" name="itemName" placeholder="상품명"><br>
+        <select class="form-control" name="itemCategory">
+                <option value="none">카테고리</option>
+                <option value="1">BEST</option>
+                <option value="2">육류</option>
+                <option value="3">야식류</option>
+                <option value="4">해산물</option>
+                <option value="5">밀키트</option>
+        </select>
+        <br>
         <input type="text" class="gap-2 form-control" name="itemPrice" placeholder="상품가격"><br>
         <input type="text" class="gap-2 form-control" name="itemDiscount" placeholder="상품할인가"><br>
         <input type="text" class="gap-2 form-control" name="itemStock" placeholder="수량"><br>
