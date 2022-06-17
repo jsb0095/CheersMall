@@ -27,9 +27,9 @@
         <th>주소2</th>
         <th>주소3</th>
         <th>수량</th>
-        <th>금액</th>
+        <th>상품금액</th>
         <th>운송장번호</th>
-        <th>배송비</th>
+        <th>총결제금액</th>
         <th>삭제</th>
 
     </tr>
@@ -44,9 +44,9 @@
             <td>${oder.oderAddress2}</td>
             <td>${oder.oderAddress3}</td>
             <td>${oder.oderAmount}개</td>
-            <td>${oder.oderPayment+oder.oderAmount+oder.oderDelivery}원</td>
+            <td>${oder.oderPayment}원</td>
             <td>${oder.oderInvoice}</td>
-            <td>${oder.oderDelivery}원</td>
+            <td>${oder.oderDelivery+oder.oderPayment}원</td>
             <td><button type="button" class="form-control btn btn-warning"onclick="dropOrder(${oder.oderId})">삭제</button></td>
 
 

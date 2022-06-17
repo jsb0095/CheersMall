@@ -67,9 +67,9 @@
     </div>
 </div>
 <div>
-    <img class="container" style="margin-left: 350px;margin-bottom: 100px; width: 1000px;" src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName2}"><br>
+    <img class="container" style="margin-left: 350px; width: 1000px;" src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName2}"><br>
     <c:if test="${itemDTO.itemImageName3 ne null}"><br>
-        <img class="container" style="margin-left: 350px;width: 1000px;margin-bottom: 100px"  src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName3}">
+        <img class="container" style="margin-left: 350px;width: 1000px"  src="${pageContext.request.contextPath}/upload/${itemDTO.itemImageName3}">
     </c:if>
         <c:if test="${sessionScope.getId!=null}">
     </div>

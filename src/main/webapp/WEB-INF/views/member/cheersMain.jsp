@@ -27,7 +27,7 @@
 <div style="margin:0 300px; width: 1200px; height: 850px">
 
 <c:forEach var="item" items="${itemDTOList}">
-    <span class="a2" style="margin-left: 150px; text-align: center">
+    <span class="a2" style="text-align: center">
         <span class="card" style="margin-top: 50px ;float:left;margin-left: 10px; width: 275px; height: 350px">
             <img  width="275px" height="245px" onclick="detail(${item.itemId})" src="${pageContext.request.contextPath}/upload/${item.itemImageName1}">
             <span class="card-body">
