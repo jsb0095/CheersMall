@@ -129,10 +129,6 @@ public class memberController {
         return "member/cheersMain";
     }
 
-    @GetMapping("/kkoPay")
-    public String kkoPay() {
-        return "member/kkoPay";
-    }
 
     @GetMapping("/userFindAll")
     public String userFindAll(Model model) {
